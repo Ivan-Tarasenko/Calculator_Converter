@@ -5,8 +5,20 @@
 //  Created by Иван Тарасенко on 08.05.2023.
 //
 
-import Foundation
+import UIKit
 
 enum R {
-    
+    enum Colors {
+        static let displayText = UIColor(named: "Redult display text")
+        
+        // Block clear button
+        static let blockConvertButton = UIColor(named: "Block converter button")
+        
+        // Block numbers
+        static let numberButton = UIColor(named: "Color button")
+        
+        // Block operations
+        static let operationButton = UIColor(named: "Block operations")
+        
+    }
 }

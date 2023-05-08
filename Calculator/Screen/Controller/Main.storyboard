@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K8P-qJ-T4b">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="hAD-8h-7vM">
+                                <rect key="frame" x="7" y="336" width="379" height="483"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="dTi-cp-PbP">
+                                        <rect key="frame" x="0.0" y="0.0" width="379" height="74.666666666666671"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K31-Hv-4C4" customClass="OperationButton" customModule="Calculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="ClearButton" label="ClearButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="C"/>
+                                                <connections>
+                                                    <action selector="clearPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PuZ-GH-BdH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6c-mA-BUt" customClass="OperationButton" customModule="Calculator">
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="PlusOrMinusButton" label="PlusOrMinusButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="±"/>
+                                                <connections>
+                                                    <action selector="reverseSingPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5pV-m0-HIJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twz-6x-pcK" customClass="OperationButton" customModule="Calculator">
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="PercentButton" label="PercentButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="%"/>
+                                                <connections>
+                                                    <action selector="procentPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ldn-hG-FwY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-jg-2tQ" customClass="OperationButton" customModule="Calculator">
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="PlusButton" label="PlusButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="+"/>
+                                                <connections>
+                                                    <action selector="operationPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OvT-Z0-acw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bQ1-L2-7gw">
+                                        <rect key="frame" x="0.0" y="81.666666666666686" width="379" height="74.666666666666686"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvT-ex-gA3" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="SevenButton" label="SevenButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="7"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="MD9-68-kMe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSX-mc-m8V" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="EightButton" label="EightButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="8"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kaE-gi-c7d"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuM-GU-bEH" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="NineButton" label="NineButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="9"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1Qs-UL-JID"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpJ-7r-kZc" customClass="OperationButton" customModule="Calculator">
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="MinusButton" label="MinusButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="-"/>
+                                                <connections>
+                                                    <action selector="operationPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3kw-hc-h59"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="jxh-4I-tCE">
+                                        <rect key="frame" x="0.0" y="163.33333333333331" width="379" height="74.666666666666686"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17P-uG-asB" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="FourButton" label="FourButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="4"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xdr-eW-fUo"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c56-8F-3UN" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="FiveButton" label="FiveButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="5"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YGE-r3-bat"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2Z-EH-Qb0" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="SixButton" label="SixButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="6"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nsE-IZ-ZCv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-N9-zkM" customClass="OperationButton" customModule="Calculator">
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="MultiplyButton" label="MultiplyButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="×"/>
+                                                <connections>
+                                                    <action selector="operationPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uYm-aP-WDU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="lfv-m5-KMg">
+                                        <rect key="frame" x="0.0" y="244.99999999999997" width="379" height="74.666666666666657"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7p-n2-9lX" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="OneButton" label="OneButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="1"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ign-r7-Hek"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5d-Ge-HdZ" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="TwoButton" label="TwoButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="2"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Fcx-Jf-ajf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xc2-Ys-hke" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="ThreeButton" label="ThreeButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="3"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CpK-HS-MDF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B34-nH-9cl" customClass="OperationButton" customModule="Calculator">
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="DivisionButton" label="DivisionButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="÷"/>
+                                                <connections>
+                                                    <action selector="operationPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PMB-Tz-UCE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="SNZ-bw-jwF">
+                                        <rect key="frame" x="0.0" y="326.66666666666663" width="379" height="74.666666666666686"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYD-QK-jl9" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="SquareRootButton" label="SquareRootButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="√"/>
+                                                <connections>
+                                                    <action selector="sqrtPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XRn-v8-OoB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCq-LQ-tnS" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="ZeroButton" label="ZeroButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="0"/>
+                                                <connections>
+                                                    <action selector="numberPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9X9-PK-iGj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbn-mf-D2W" customClass="NumberButton" customModule="Calculator">
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="DotButton" label="DotButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="."/>
+                                                <connections>
+                                                    <action selector="dotButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HxL-V9-WHn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPN-Ct-OSs" customClass="OperationButton" customModule="Calculator">
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="EquallyButton" label="EquallyButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="="/>
+                                                <connections>
+                                                    <action selector="equalityPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JPk-Qv-a2r"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="pDZ-1O-0l3">
+                                        <rect key="frame" x="0.0" y="408.33333333333337" width="379" height="74.666666666666686"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uY-b2-AWq" customClass="ConverterButton" customModule="Calculator">
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="SquareRootButton" label="SquareRootButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="＄/₽"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-mO-eGd" customClass="ConverterButton" customModule="Calculator">
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="ZeroButton" label="ZeroButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="€/₽"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3V-5i-EvD" customClass="ConverterButton" customModule="Calculator">
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 1"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="DotButton" label="DotButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title=".../₽"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuH-gv-4e0" customClass="ConverterButton" customModule="Calculator">
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
+                                                <color key="backgroundColor" name="Number Buttons 2"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="EquallyButton" label="EquallyButton"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title=".../..."/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="kvB-Nu-kZ9">
+                                <rect key="frame" x="7" y="209.00000000000003" width="379" height="118.33333333333334"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ResultLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="96"/>
+                                <color key="textColor" name="Redult display text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QVi-0b-ea3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kvB-Nu-kZ9" firstAttribute="top" secondItem="QVi-0b-ea3" secondAttribute="top" constant="150" id="3LG-Ge-gBg"/>
+                            <constraint firstItem="QVi-0b-ea3" firstAttribute="trailing" secondItem="hAD-8h-7vM" secondAttribute="trailing" constant="7" id="DVL-HK-aOe"/>
+                            <constraint firstItem="hAD-8h-7vM" firstAttribute="leading" secondItem="QVi-0b-ea3" secondAttribute="leading" constant="7" id="cPW-hV-Lbe"/>
+                            <constraint firstItem="hAD-8h-7vM" firstAttribute="top" secondItem="kvB-Nu-kZ9" secondAttribute="bottom" constant="8.6666666666666288" id="fnq-8N-toJ"/>
+                            <constraint firstItem="kvB-Nu-kZ9" firstAttribute="leading" secondItem="QVi-0b-ea3" secondAttribute="leading" constant="7" id="pci-Nd-9N0"/>
+                            <constraint firstItem="QVi-0b-ea3" firstAttribute="trailing" secondItem="kvB-Nu-kZ9" secondAttribute="trailing" constant="7" id="tf0-BE-EFO"/>
+                            <constraint firstItem="kvB-Nu-kZ9" firstAttribute="height" secondItem="hAD-8h-7vM" secondAttribute="height" multiplier="0.245554" constant="-0.26924866666665537" id="uIa-sq-Sez"/>
+                            <constraint firstItem="QVi-0b-ea3" firstAttribute="bottom" secondItem="hAD-8h-7vM" secondAttribute="bottom" constant="-1" id="yrN-eg-LhV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="displayLabel" destination="kvB-Nu-kZ9" id="Sf4-vV-L6y"/>
+                        <outlet property="topConstraint" destination="3LG-Ge-gBg" id="Gt9-30-c3j"/>
+                        <outletCollection property="buttons" destination="K31-Hv-4C4" collectionClass="NSMutableArray" id="odK-Yn-Zfu"/>
+                        <outletCollection property="buttons" destination="W6c-mA-BUt" collectionClass="NSMutableArray" id="oZT-2z-dWZ"/>
+                        <outletCollection property="buttons" destination="Twz-6x-pcK" collectionClass="NSMutableArray" id="00T-Lp-j1t"/>
+                        <outletCollection property="buttons" destination="rh3-jg-2tQ" collectionClass="NSMutableArray" id="aS9-HZ-69K"/>
+                        <outletCollection property="buttons" destination="pvT-ex-gA3" collectionClass="NSMutableArray" id="0Mq-Bw-UsI"/>
+                        <outletCollection property="buttons" destination="CSX-mc-m8V" collectionClass="NSMutableArray" id="MDU-Fw-5MX"/>
+                        <outletCollection property="buttons" destination="uuM-GU-bEH" collectionClass="NSMutableArray" id="2Hh-Ue-Hvn"/>
+                        <outletCollection property="buttons" destination="IpJ-7r-kZc" collectionClass="NSMutableArray" id="CtC-Wt-kNQ"/>
+                        <outletCollection property="buttons" destination="17P-uG-asB" collectionClass="NSMutableArray" id="M0I-Hu-4kj"/>
+                        <outletCollection property="buttons" destination="c56-8F-3UN" collectionClass="NSMutableArray" id="kmi-hO-BF1"/>
+                        <outletCollection property="buttons" destination="e2Z-EH-Qb0" collectionClass="NSMutableArray" id="nuP-Bj-uam"/>
+                        <outletCollection property="buttons" destination="bfM-N9-zkM" collectionClass="NSMutableArray" id="QTe-X6-Ynd"/>
+                        <outletCollection property="buttons" destination="i7p-n2-9lX" collectionClass="NSMutableArray" id="inn-KQ-47J"/>
+                        <outletCollection property="buttons" destination="b5d-Ge-HdZ" collectionClass="NSMutableArray" id="Dcp-0b-nkY"/>
+                        <outletCollection property="buttons" destination="B34-nH-9cl" collectionClass="NSMutableArray" id="tpe-Fz-LkV"/>
+                        <outletCollection property="buttons" destination="xc2-Ys-hke" collectionClass="NSMutableArray" id="lU1-gW-AI2"/>
+                        <outletCollection property="buttons" destination="uYD-QK-jl9" collectionClass="NSMutableArray" id="4zf-Af-eug"/>
+                        <outletCollection property="buttons" destination="VCq-LQ-tnS" collectionClass="NSMutableArray" id="lKk-oc-yn8"/>
+                        <outletCollection property="buttons" destination="Cbn-mf-D2W" collectionClass="NSMutableArray" id="Ku7-Ho-L54"/>
+                        <outletCollection property="buttons" destination="gPN-Ct-OSs" collectionClass="NSMutableArray" id="L1k-IW-Fuf"/>
+                        <outletCollection property="buttons" destination="5uY-b2-AWq" collectionClass="NSMutableArray" id="Ohz-Zc-onJ"/>
+                        <outletCollection property="buttons" destination="ei9-mO-eGd" collectionClass="NSMutableArray" id="1F1-FR-QKm"/>
+                        <outletCollection property="buttons" destination="J3V-5i-EvD" collectionClass="NSMutableArray" id="mVF-cT-3EH"/>
+                        <outletCollection property="buttons" destination="UuH-gv-4e0" collectionClass="NSMutableArray" id="F5h-KO-NmO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="58" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Number Buttons 1">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Number Buttons 2">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Redult display text">
+            <color red="0.26100000739097595" green="0.26100000739097595" blue="0.26100000739097595" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
