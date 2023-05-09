@@ -9,18 +9,42 @@ import UIKit
 
 final class CrossCourseView: UIView {
     
-    let toolBar = ToolBar()
+    var onDoneAction: (() -> Void)?
+    var onCancelAction: (() -> Void)?
     
     var dataSource = PickerDataSource()
+    
+    private let stackView = UIStackView()
+    
     private let pickerView = UIPickerView()
     
     private let viewModel: ViewModelProtocol
     
+    private let cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let doneButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Done", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.contentHorizontalAlignment = .right
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     init(viewModel: ViewModelProtocol) {
         self.viewModel = viewModel
         super.init(frame: .zero)
-        configereView()
+        configurationView()
         addConstraint()
+        configurationStackView()
+        addTarget()
         bind()
     }
     
@@ -32,28 +56,39 @@ final class CrossCourseView: UIView {
 
 // MARK: - Private extensiion
 private extension CrossCourseView {
-    func configereView() {
-        backgroundColor = .white
+    func configurationView() {
         pickerView.backgroundColor = R.Colors.pickerViewColor
         addSubview(pickerView)
-        addSubview(toolBar)
+        addSubview(stackView)
+    }
+    
+    func configurationStackView() {
+        stackView.backgroundColor = R.Colors.pickerViewColor
+        stackView.distribution = .fillEqually
+        stackView.addArrangedSubview(cancelButton)
+        stackView.addArrangedSubview(doneButton)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func addConstraint() {
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        toolBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             pickerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            pickerView.topAnchor.constraint(equalTo: toolBar.topAnchor),
+            pickerView.topAnchor.constraint(equalTo: stackView.topAnchor),
             pickerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             pickerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            toolBar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            toolBar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            toolBar.topAnchor.constraint(equalTo: self.topAnchor)
-            
+            stackView.heightAnchor.constraint(equalToConstant: 44),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
+            stackView.topAnchor.constraint(equalTo: self.topAnchor)
         ])
+    }
+    
+    func addTarget() {
+        doneButton.addTarget(self, action: #selector(doneButtonPress), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelButtonPress), for: .touchUpInside)
     }
     
     func bind() {
@@ -65,5 +100,15 @@ private extension CrossCourseView {
             dataSource.title = self.viewModel.currencyKeys()
             dataSource.subtitle = self.viewModel.currencyName()
         }
+    }
+}
+
+@objc extension CrossCourseView {
+    func doneButtonPress() {
+        onDoneAction?()
+    }
+    
+    func cancelButtonPress() {
+        onCancelAction?()
     }
 }

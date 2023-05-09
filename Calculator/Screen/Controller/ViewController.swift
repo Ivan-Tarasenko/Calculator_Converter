@@ -48,21 +48,6 @@ final class ViewController: UIViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if #available(iOS 12.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                var preferredStatusBarStyle: UIStatusBarStyle {
-                    return .lightContent
-                }
-            } else {
-                var preferredStatusBarStyle: UIStatusBarStyle {
-                    return .darkContent
-                }
-            }
-        }
-    }
-    
     // MARK: - Actions
     @IBAction func clearPressed(_ sender: UIButton) {
         viewModel.clear(&currentInput, and: displayLabel)
@@ -128,7 +113,7 @@ final class ViewController: UIViewController {
         
         guard let crossCoerseView = self.crossCoerseView else { return }
         
-        crossCoerseView.toolBar.onDone = { [weak self] in
+        crossCoerseView.onDoneAction = { [weak self] in
             guard let self else { return }
             
             crossCoerseView.isHidden = true
@@ -147,7 +132,7 @@ final class ViewController: UIViewController {
     }
     
     private func crossCoerseCancelPressed() {
-        crossCoerseView?.toolBar.onCancel = { [weak self] in
+        crossCoerseView?.onCancelAction = { [weak self] in
             guard let self else { return }
             self.crossCoerseView?.isHidden = true
         }
@@ -169,9 +154,7 @@ final class ViewController: UIViewController {
             crossCoerseView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
-                
-                crossCoerseView.widthAnchor.constraint(equalToConstant: view.bounds.width),
-                crossCoerseView.heightAnchor.constraint(equalToConstant: 328),
+                crossCoerseView.heightAnchor.constraint(equalToConstant: 270),
                 crossCoerseView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                 crossCoerseView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                 crossCoerseView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
