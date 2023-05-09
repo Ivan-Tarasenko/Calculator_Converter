@@ -42,10 +42,10 @@ final class ViewModel: ViewModelProtocol {
     
     var isTyping = false
     var isFetchData = true
-    private var isDotPlaced = false
-    private var firstOperand: Double = 0
-    private var secondOperand: Double = 0
-    private var operation: String = ""
+    var isDotPlaced = false
+    var firstOperand: Double = 0
+    var secondOperand: Double = 0
+    var operation: String = ""
     
     private var networkManager: NetworkManagerProtocol = NetworkManager()
     
@@ -58,8 +58,6 @@ final class ViewModel: ViewModelProtocol {
        }
     
     init() {
-        
-        print("model")
         fetchData()
     }
     
@@ -205,7 +203,6 @@ final class ViewModel: ViewModelProtocol {
         let result = (currencyValue! / naminal!) * quantity
         let roundValue = round(result * 1000) / 1000
         isTyping = false
-        
         return String(roundValue)
     }
     

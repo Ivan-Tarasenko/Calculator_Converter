@@ -23,8 +23,6 @@ enum R {
         // PickerView
         static let pickerViewColor = UIColor(named: "Picker view")
         static let subtitleColor = UIColor(named: "Text Subtitle")
-        
-        
     }
     
     enum Titles {

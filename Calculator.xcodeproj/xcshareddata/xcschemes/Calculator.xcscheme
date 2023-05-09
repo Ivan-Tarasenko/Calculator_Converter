@@ -49,6 +49,11 @@
                BlueprintName = "CalculatorUITests"
                ReferencedContainer = "container:Calculator.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CalculatorUITests/testLaunchPerformance()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

@@ -292,7 +292,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uY-b2-AWq" customClass="ConverterButton" customModule="Calculator">
                                                 <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
                                                 <color key="backgroundColor" name="Number Buttons 1"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="SquareRootButton" label="SquareRootButton"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="DollarRateButton" label="DollarRateButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -304,7 +304,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-mO-eGd" customClass="ConverterButton" customModule="Calculator">
                                                 <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
                                                 <color key="backgroundColor" name="Number Buttons 1"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="ZeroButton" label="ZeroButton"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="EuroRateButton" label="EuroRateButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -316,7 +316,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3V-5i-EvD" customClass="MultiCurrencySelectionButton" customModule="Calculator" customModuleProvider="target">
                                                 <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
                                                 <color key="backgroundColor" name="Number Buttons 1"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="DotButton" label="DotButton"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="ChooseCurrencyButton" label="ChooseCurrencyButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -325,7 +325,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuH-gv-4e0" customClass="ConverterButton" customModule="Calculator">
                                                 <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
                                                 <color key="backgroundColor" name="Number Buttons 2"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="EquallyButton" label="EquallyButton"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="CrossRateButton" label="CrossRateButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
