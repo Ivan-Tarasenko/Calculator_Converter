@@ -20,5 +20,15 @@ enum R {
         // Block operations
         static let operationButton = UIColor(named: "Block operations")
         
+        // PickerView
+        static let pickerViewColor = UIColor(named: "Picker view")
+        static let subtitleColor = UIColor(named: "Text Subtitle")
+        
+        
+    }
+    
+    enum Titles {
+        static let warningAlert = NSLocalizedString("warning", comment: "")
+        static let massageAlert = NSLocalizedString("noData", comment: "")
     }
 }

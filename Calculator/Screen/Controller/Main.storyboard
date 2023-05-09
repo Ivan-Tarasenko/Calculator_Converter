@@ -297,6 +297,9 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="＄/₽"/>
+                                                <connections>
+                                                    <action selector="convertDollarPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WaN-kp-cuy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-mO-eGd" customClass="ConverterButton" customModule="Calculator">
                                                 <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
@@ -306,8 +309,11 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="€/₽"/>
+                                                <connections>
+                                                    <action selector="convertInEuroPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WAs-16-ODT"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3V-5i-EvD" customClass="ConverterButton" customModule="Calculator">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3V-5i-EvD" customClass="MultiCurrencySelectionButton" customModule="Calculator" customModuleProvider="target">
                                                 <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
                                                 <color key="backgroundColor" name="Number Buttons 1"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="DotButton" label="DotButton"/>
@@ -324,6 +330,9 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title=".../..."/>
+                                                <connections>
+                                                    <action selector="crossCoursePressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DDd-9o-rcz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -352,7 +361,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="crossCourseButton" destination="UuH-gv-4e0" id="PNk-CK-uwg"/>
                         <outlet property="displayLabel" destination="kvB-Nu-kZ9" id="Sf4-vV-L6y"/>
+                        <outlet property="multiCurrencyButton" destination="J3V-5i-EvD" id="Pt6-ju-in8"/>
                         <outlet property="topConstraint" destination="3LG-Ge-gBg" id="Gt9-30-c3j"/>
                         <outletCollection property="buttons" destination="K31-Hv-4C4" collectionClass="NSMutableArray" id="odK-Yn-Zfu"/>
                         <outletCollection property="buttons" destination="W6c-mA-BUt" collectionClass="NSMutableArray" id="oZT-2z-dWZ"/>

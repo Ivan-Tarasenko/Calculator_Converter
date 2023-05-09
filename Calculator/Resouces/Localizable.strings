@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Calculator
+
+  Created by Иван Тарасенко on 09.05.2023.
+  
+*/
+
+"warning" = "Warning";
+
+"noData" = "It was not possible to get data on exchange rates, check your Internet connection.";

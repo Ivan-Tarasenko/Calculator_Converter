@@ -11,6 +11,10 @@ import UIKit
 protocol ViewModelProtocol: AnyObject {
     
     var isTyping: Bool { get set }
+    var isFetchData: Bool { get }
+    
+    var onUpDataCurrency: (([String: Currency]) -> Void)? { get set }
+    var onFetchData: ((Bool) -> Void)? { get set }
     
     func limitInput(for inputValue: String, andShowIn label: UILabel)
     func clear(_ currentValue: inout Double, and label: UILabel)
@@ -21,15 +25,43 @@ protocol ViewModelProtocol: AnyObject {
     func performOperation(for value: inout Double)
     func enterNumberWithDot(in label: UILabel)
     
+    func fetchData()
+    
+    func getCurrencyExchange(for charCode: String, quantity: Double) -> String
+    func calculateCrossRate(for firstOperand: Double, quantity: Double, with secondOperand: Double) -> String
+    func currencyKeys() -> [String]
+    func currencyName() -> [String]
+    
+    func showAlert(on view: UIViewController, title: String, massage: String)
 }
 
 final class ViewModel: ViewModelProtocol {
     
+    var onUpDataCurrency: (([String: Currency]) -> Void)?
+    var onFetchData: ((Bool) -> Void)?
+    
     var isTyping = false
+    var isFetchData = true
     private var isDotPlaced = false
     private var firstOperand: Double = 0
     private var secondOperand: Double = 0
     private var operation: String = ""
+    
+    private var networkManager: NetworkManagerProtocol = NetworkManager()
+    
+    var currencies: [String: Currency]? {
+           didSet {
+               if let currency = currencies {
+                   onUpDataCurrency?(currency)
+               }
+           }
+       }
+    
+    init() {
+        
+        print("model")
+        fetchData()
+    }
     
     func limitInput(for inputValue: String, andShowIn label: UILabel) {
         if isTyping {
@@ -129,5 +161,79 @@ final class ViewModel: ViewModelProtocol {
         operation = ""
         isTyping = false
         isDotPlaced = false
+    }
+    
+    // MARK: - Fetch Data
+     func fetchData() {
+        networkManager.fetchData { [weak self] currencies, error  in
+            guard let self else { return }
+            guard error == nil else {
+                self.isFetchData = false
+                self.onFetchData?(self.isFetchData)
+                return }
+            
+            self.currencies = currencies
+        }
+    }
+    
+    // MARK: - Сurrency exchange rate transactions
+    func currencyKeys() -> [String] {
+        var keys = [String]()
+        for (key, _) in sortCurrency() {
+            keys.append(key)
+        }
+        return keys
+    }
+    
+    func currencyName() -> [String] {
+        var names = [String]()
+        for (_, value) in sortCurrency() {
+            names.append(value.name)
+        }
+        return names
+    }
+    
+    func getCurrencyExchange(for charCode: String, quantity: Double) -> String {
+        guard let currencies = currencies else { return "0" }
+        var quantity = quantity
+        if quantity == 0 {
+            quantity = 1
+        }
+        let currency = currencies[charCode]
+        let currencyValue = currency?.value
+        let naminal = currency?.nominal
+        let result = (currencyValue! / naminal!) * quantity
+        let roundValue = round(result * 1000) / 1000
+        isTyping = false
+        
+        return String(roundValue)
+    }
+    
+    func calculateCrossRate(for firstOperand: Double, quantity: Double, with secondOperand: Double) -> String {
+        var quantity = quantity
+        if quantity == 0 {
+            quantity = 1
+        }
+        let result = (quantity * firstOperand) / secondOperand
+        let roundValue = round(result * 1000) / 1000
+        isTyping = false
+        return String(roundValue)
+    }
+    
+    func showAlert(on view: UIViewController, title: String, massage: String) {
+        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        
+        alert.addAction(cancel)
+        view.present(alert, animated: true)
+    }
+    
+    private func sortCurrency() -> [Dictionary<String, Currency>.Element] {
+        var sort: [Dictionary<String, Currency>.Element] = []
+        if let currencies = currencies {
+            sort = currencies.sorted(by: {$0.key < $1.key})
+        }
+        return sort
     }
 }
