@@ -53,15 +53,11 @@ URLSession
 <p align="center">
 <a href="https://github.com/realm/SwiftLint" alt="SwiftLint badge">
 <img src="https://img.shields.io/badge/CodeStyle-SwiftLint-blueviolet"></a>
-<a href="https://github.com/Ivan-Tarasenko/
-Calculator_Converter/blob/main/LICENSE.txt">
+<a href="https://github.com/Ivan-Tarasenko/Calculator_Converter/blob/main/LICENSE.txt">
 <img src="https://img.shields.io/badge/license-MIT-green?style=flat"></a>
-<a><img src="https://img.shields.io/github/commit-activity/y/Ivan-Tarasenko/
-Calculator_Converter"></a>
-<a><img src="https://img.shields.io/github/directory-file-count/Ivan-Tarasenko/
-Calculator_Converter"></a>
-<a><img src="https://img.shields.io/github/repo-size/Ivan-Tarasenko/
-Calculator_Converter"></a>
+<a><img src="https://img.shields.io/github/commit-activity/y/Ivan-Tarasenko/Calculator_Converter"></a>
+<a><img src="https://img.shields.io/github/directory-file-count/Ivan-Tarasenko/Calculator_Converter"></a>
+<a><img src="https://img.shields.io/github/repo-size/Ivan-Tarasenko/Calculator_Converter"></a>
 <a><img src="https://img.shields.io/github/issues-pr-closed/Ivan-Tarasenko/Online_Bank?color=yellowgreen"></a>
 <a><img src="https://img.shields.io/badge/language-Swift%205-orange.svg"></a>
 </p>
