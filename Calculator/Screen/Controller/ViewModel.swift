@@ -163,8 +163,12 @@ final class ViewModel: ViewModelProtocol {
     
     // MARK: - Fetch Data
      func fetchData() {
-        networkManager.fetchData { [weak self] currencies, error  in
+        networkManager.fetchData { [weak self] currencies, responseCode, error  in
             guard let self else { return }
+            
+            print("error \(error)")
+            print("response \(responseCode)")
+            
             guard error == nil else {
                 self.isFetchData = false
                 self.onFetchData?(self.isFetchData)

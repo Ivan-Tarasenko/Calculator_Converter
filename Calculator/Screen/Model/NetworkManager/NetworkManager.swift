@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkManagerProtocol: AnyObject {
-    func fetchData(completion: @escaping ([String: Currency]?, Error?) -> Void)
+    func fetchData(completion: @escaping ([String: Currency]?, Int?, Error?) -> Void)
 }
 
 final class NetworkManager: NetworkManagerProtocol {
@@ -17,36 +17,28 @@ final class NetworkManager: NetworkManagerProtocol {
     private var urlString = "https://www.cbr-xml-daily.ru/daily_json.js"
     
     // MARK: - Fetch data
-    func fetchData(completion: @escaping ([String: Currency]?, Error?) -> Void) {
+    func fetchData(completion: @escaping ([String: Currency]?, Int?, Error?) -> Void) {
         guard let URL = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         
         let task = session.dataTask(with: URL) { data, response, error in
             
-            var data = data
-            
             if error != nil {
-                
-                if self.saveData.data != nil {
-                    data = self.saveData.data
-                } else {
-                    completion(nil, error)
-                }
+                completion(nil, nil, error)
             }
             
             if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode != 200 && self.saveData.data == nil {
-                    print(httpResponse.statusCode)
-                    completion(nil, error)
+                if httpResponse.statusCode != 200 {
+                    completion(nil, httpResponse.statusCode, nil)
                 }
-                  
-               }
+            }
             
             if let data = data {
+                print("fetch")
                 self.saveData.data = data
-                if let currencyEntity =  self.parseJSON(withData: data) {
+                if let currencyEntity =  self.parseJSON(withData: self.saveData.data!) {
                     DispatchQueue.main.async {
-                        completion(currencyEntity.currency, nil)
+                        completion(currencyEntity.currency, nil, nil)
                     }
                 }
             }

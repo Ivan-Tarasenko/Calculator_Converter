@@ -57,13 +57,13 @@ final class CrossCourseView: UIView {
 // MARK: - Private extensiion
 private extension CrossCourseView {
     func configurationView() {
-        pickerView.backgroundColor = R.Colors.pickerViewColor
+        pickerView.backgroundColor = UIColor(resource: .pickerView)
         addSubview(pickerView)
         addSubview(stackView)
     }
     
     func configurationStackView() {
-        stackView.backgroundColor = R.Colors.pickerViewColor
+        stackView.backgroundColor = UIColor(resource: .pickerView)
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(cancelButton)
         stackView.addArrangedSubview(doneButton)

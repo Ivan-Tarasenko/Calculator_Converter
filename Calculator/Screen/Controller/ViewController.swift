@@ -12,7 +12,7 @@ final class ViewController: UIViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var multiCurrencyButton: MultiCurrencySelectionButton!
-    @IBOutlet weak var crossCourseButton: ConverterButton!
+    @IBOutlet weak var crossCourseButton: BaseButton!
     @IBOutlet var buttons: [UIButton]!
     
     var currentInput: Double {
@@ -25,18 +25,19 @@ final class ViewController: UIViewController {
     }
     
     private let viewModel: ViewModelProtocol = ViewModel()
-    private var crossCoerseView: CrossCourseView?
+    private var crossCourseView: CrossCourseView?
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        crossCoerseView = CrossCourseView(viewModel: viewModel)
+        crossCourseView = CrossCourseView(viewModel: viewModel)
+        
         configurationView()
         addConstraint()
-        configur(buttons: buttons)
         multiCurrencyButtonPressed()
         checkFetchData()
-        crossCoerseDonePressed()
-        crossCoerseCancelPressed()
+        crossCourseDonePressed()
+        crossCourseCancelPressed()
+        sendHeadersInMultiCurrencyButtun()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -106,12 +107,11 @@ final class ViewController: UIViewController {
     @IBAction func crossCoursePressed(_ sender: UIButton) {
         viewModel.clear(&currentInput, and: displayLabel)
         sender.titleLabel?.adjustsFontSizeToFitWidth = true
-        crossCoerseView?.isHidden = false
+        crossCourseView?.isHidden = false
     }
     
-    private func crossCoerseDonePressed() {
-        
-        guard let crossCoerseView = self.crossCoerseView else { return }
+    private func crossCourseDonePressed() {
+        guard let crossCoerseView = self.crossCourseView else { return }
         
         crossCoerseView.onDoneAction = { [weak self] in
             guard let self else { return }
@@ -131,12 +131,18 @@ final class ViewController: UIViewController {
         }
     }
     
-    private func crossCoerseCancelPressed() {
-        crossCoerseView?.onCancelAction = { [weak self] in
+    private func crossCourseCancelPressed() {
+        crossCourseView?.onCancelAction = { [weak self] in
             guard let self else { return }
-            self.crossCoerseView?.isHidden = true
+            self.crossCourseView?.isHidden = true
         }
-        
+    }
+    
+    private func sendHeadersInMultiCurrencyButtun() {
+        viewModel.onUpDataCurrency = { currencies in
+            self.multiCurrencyButton.currencies = currencies
+            self.multiCurrencyButton.setPopUpMenu(for: self.multiCurrencyButton)
+        }
     }
 }
     
@@ -144,13 +150,13 @@ final class ViewController: UIViewController {
     private extension ViewController {
         
         func configurationView() {
-            guard let crossCoerseView = crossCoerseView else { return }
+            guard let crossCoerseView = crossCourseView else { return }
             view.addSubview(crossCoerseView)
             crossCoerseView.isHidden = true
         }
         
         func addConstraint() {
-            guard let crossCoerseView = crossCoerseView else { return }
+            guard let crossCoerseView = crossCourseView else { return }
             crossCoerseView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
@@ -159,12 +165,6 @@ final class ViewController: UIViewController {
                 crossCoerseView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                 crossCoerseView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ])
-        }
-        
-        func configur(buttons: [UIButton]) {
-            for buttom in buttons {
-                buttom.layer.cornerRadius = 15
-            }
         }
         
         func checkFetchData() {

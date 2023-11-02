@@ -7,35 +7,18 @@
 
 import UIKit
 
-final class MultiCurrencySelectionButton: UIButton {
+final class MultiCurrencySelectionButton: BaseButton {
     
     var onActionMultiButton: (([String]) -> Void)?
-    
-    var viewModel: ViewModelProtocol?
-    
-    override public var isHighlighted: Bool {
-        didSet {
-            if isHighlighted {
-                UIView.animate(withDuration: 0.1) {
-                    self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                }
-            } else {
-                UIView.animate(withDuration: 0.1) {
-                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }
-            }
-        }
-    }
+    var currencies: [String: Currency] = [:]
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        viewModel = ViewModel()
-        backgroundColor = R.Colors.blockConvertButton
         setPopUpMenu(for: self)
+        
     }
     
     // setting menu for pop up button
-    @available(iOS 15.0, *)
     func setPopUpMenu(for button: UIButton) {
         button.titleLabel?.adjustsFontSizeToFitWidth = true
 
@@ -52,8 +35,6 @@ final class MultiCurrencySelectionButton: UIButton {
         let ziroMenuItem = UIAction(title: ".../₽", state: .on, handler: itemPressed)
         actions.append(ziroMenuItem)
 
-        viewModel?.onUpDataCurrency = { currencies in
-            
                 let sortCurrency = currencies.sorted(by: {$0.key > $1.key})
             
                 for (key, value) in sortCurrency {
@@ -64,7 +45,5 @@ final class MultiCurrencySelectionButton: UIButton {
             button.menu = UIMenu(title: ".../₽", children: actions)
             button.showsMenuAsPrimaryAction = true
             button.changesSelectionAsPrimaryAction = true
-        }
-        
     }
 }
