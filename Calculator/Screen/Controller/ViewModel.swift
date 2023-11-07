@@ -11,7 +11,6 @@ import UIKit
 protocol ViewModelProtocol: AnyObject {
     
     var isTyping: Bool { get set }
-    var isFetchData: Bool { get }
     
     var onUpDataCurrency: (([String: Currency]) -> Void)? { get set }
     var onFetchData: ((Bool) -> Void)? { get set }
@@ -29,10 +28,6 @@ protocol ViewModelProtocol: AnyObject {
     
     func getCurrencyExchange(for charCode: String, quantity: Double) -> String
     func calculateCrossRate(for firstOperand: Double, quantity: Double, with secondOperand: Double) -> String
-    func currencyKeys() -> [String]
-    func currencyName() -> [String]
-    
-    func showAlert(on view: UIViewController, title: String, massage: String)
 }
 
 final class ViewModel: ViewModelProtocol {
@@ -41,7 +36,6 @@ final class ViewModel: ViewModelProtocol {
     var onFetchData: ((Bool) -> Void)?
     
     var isTyping = false
-    var isFetchData = true
     var isDotPlaced = false
     var firstOperand: Double = 0
     var secondOperand: Double = 0
@@ -166,34 +160,24 @@ final class ViewModel: ViewModelProtocol {
         networkManager.fetchData { [weak self] currencies, responseCode, error  in
             guard let self else { return }
             
-            print("error \(error)")
-            print("response \(responseCode)")
+            if error != nil {
+                AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.noData)
+            }
+
+            if responseCode != nil {
+                networkErrorHandling(status: responseCode!)
+            }
+
+            if currencies != nil {
+                self.currencies = currencies
+            } else {
+                AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: "данные еще не загружены")
+            }
             
-            guard error == nil else {
-                self.isFetchData = false
-                self.onFetchData?(self.isFetchData)
-                return }
-            
-            self.currencies = currencies
         }
     }
     
     // MARK: - Сurrency exchange rate transactions
-    func currencyKeys() -> [String] {
-        var keys = [String]()
-        for (key, _) in sortCurrency() {
-            keys.append(key)
-        }
-        return keys
-    }
-    
-    func currencyName() -> [String] {
-        var names = [String]()
-        for (_, value) in sortCurrency() {
-            names.append(value.name)
-        }
-        return names
-    }
     
     func getCurrencyExchange(for charCode: String, quantity: Double) -> String {
         guard let currencies = currencies else { return "0" }
@@ -221,20 +205,14 @@ final class ViewModel: ViewModelProtocol {
         return String(roundValue)
     }
     
-    func showAlert(on view: UIViewController, title: String, massage: String) {
-        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .default)
-        
-        alert.addAction(cancel)
-        view.present(alert, animated: true)
-    }
-    
-    private func sortCurrency() -> [Dictionary<String, Currency>.Element] {
-        var sort: [Dictionary<String, Currency>.Element] = []
-        if let currencies = currencies {
-            sort = currencies.sorted(by: {$0.key < $1.key})
+    private func networkErrorHandling(status: Int) {
+        switch status {
+        case 402...499:
+            AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.clientError)
+        case 500...599:
+            AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.serverError)
+        default:
+            break
         }
-        return sort
     }
 }

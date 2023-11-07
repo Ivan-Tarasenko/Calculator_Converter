@@ -34,7 +34,6 @@ final class NetworkManager: NetworkManagerProtocol {
             }
             
             if let data = data {
-                print("fetch")
                 self.saveData.data = data
                 if let currencyEntity =  self.parseJSON(withData: self.saveData.data!) {
                     DispatchQueue.main.async {
@@ -54,6 +53,16 @@ final class NetworkManager: NetworkManagerProtocol {
             return currencyEntity
         } catch let error as NSError {
             print(error.localizedDescription)
+        }
+        return nil
+    }
+    
+    private func getMassage(withData data: Data? ) -> String? {
+        if let responseData = data,
+           let jsonResponse = try? JSONSerialization.jsonObject(with: responseData, options: []),
+           let errorDict = jsonResponse as? [String: Any],
+           let errorMessage = errorDict["message"] as? String {
+            return errorMessage
         }
         return nil
     }

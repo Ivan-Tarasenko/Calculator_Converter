@@ -8,8 +8,10 @@
 import UIKit
 
 enum R {
-    enum Titles {
+    enum Errors {
         static let warningAlert = NSLocalizedString("warning", comment: "")
-        static let massageAlert = NSLocalizedString("noData", comment: "")
+        static let noData = NSLocalizedString("noData", comment: "")
+        static let clientError = NSLocalizedString("clientError", comment: "")
+        static let serverError = NSLocalizedString("serverError", comment: "")
     }
 }

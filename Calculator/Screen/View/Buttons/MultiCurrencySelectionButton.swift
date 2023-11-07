@@ -12,12 +12,6 @@ final class MultiCurrencySelectionButton: BaseButton {
     var onActionMultiButton: (([String]) -> Void)?
     var currencies: [String: Currency] = [:]
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setPopUpMenu(for: self)
-        
-    }
-    
     // setting menu for pop up button
     func setPopUpMenu(for button: UIButton) {
         button.titleLabel?.adjustsFontSizeToFitWidth = true
