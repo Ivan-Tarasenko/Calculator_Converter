@@ -57,6 +57,6 @@ private extension ItemView {
     func setupSubtitle() {
         addSubview(subtitle)
         subtitle.font = UIFont.systemFont(ofSize: 16)
-        subtitle.textColor = R.Colors.subtitleColor
+        subtitle.textColor = UIColor(resource: .textSubtitle)
     }
 }

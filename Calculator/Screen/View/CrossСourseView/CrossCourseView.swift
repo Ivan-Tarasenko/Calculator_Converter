@@ -14,11 +14,10 @@ final class CrossCourseView: UIView {
     
     var dataSource = PickerDataSource()
     
+    var currencies: [String: Currency] = [:]
+
     private let stackView = UIStackView()
-    
     private let pickerView = UIPickerView()
-    
-    private let viewModel: ViewModelProtocol
     
     private let cancelButton: UIButton = {
         let button = UIButton()
@@ -38,40 +37,65 @@ final class CrossCourseView: UIView {
         return button
     }()
     
-    init(viewModel: ViewModelProtocol) {
-        self.viewModel = viewModel
+    init() {
         super.init(frame: .zero)
         configurationView()
         addConstraint()
         configurationStackView()
         addTarget()
-        bind()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func bind() {
+        self.pickerView.dataSource = dataSource
+        self.pickerView.delegate = dataSource
+        dataSource.currencies = currencies
+        dataSource.title = getSortCurrencyKeys(from: currencies)
+        dataSource.subtitle = getSortCurrencyName(from: currencies)
+    }
+    
 }
 
 // MARK: - Private extensiion
 private extension CrossCourseView {
+    
+    func getSortCurrencyKeys(from data: [String: Currency]) -> [String] {
+        let sortCurrency = data.sorted(by: {$0.key > $1.key})
+        var keys = [String]()
+        for (key, _) in sortCurrency {
+            keys.append(key)
+        }
+        return keys
+    }
+    
+    func getSortCurrencyName(from data: [String: Currency]) -> [String] {
+        let sortCurrency = data.sorted(by: {$0.key > $1.key})
+        var names = [String]()
+        for (_, value) in sortCurrency {
+            names.append(value.name)
+        }
+        return names
+    }
+    
     func configurationView() {
-        pickerView.backgroundColor = R.Colors.pickerViewColor
+        pickerView.backgroundColor = UIColor(resource: .pickerView)
         addSubview(pickerView)
         addSubview(stackView)
     }
     
     func configurationStackView() {
-        stackView.backgroundColor = R.Colors.pickerViewColor
+        stackView.backgroundColor = UIColor(resource: .pickerView)
         stackView.distribution = .fillEqually
         stackView.addArrangedSubview(cancelButton)
         stackView.addArrangedSubview(doneButton)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func addConstraint() {
         pickerView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             pickerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -89,17 +113,6 @@ private extension CrossCourseView {
     func addTarget() {
         doneButton.addTarget(self, action: #selector(doneButtonPress), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(cancelButtonPress), for: .touchUpInside)
-    }
-    
-    func bind() {
-        viewModel.onUpDataCurrency = { [weak self, dataSource] data in
-            guard let self = self else { return }
-            dataSource.currencies = data
-            self.pickerView.dataSource = dataSource
-            self.pickerView.delegate = dataSource
-            dataSource.title = self.viewModel.currencyKeys()
-            dataSource.subtitle = self.viewModel.currencyName()
-        }
     }
 }
 
