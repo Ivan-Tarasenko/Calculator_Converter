@@ -1,13 +1,13 @@
 //
-//  OperationButton.swift
+//  BaseButton.swift
 //  Calculator
 //
-//  Created by Иван Тарасенко on 08.05.2023.
+//  Created by Иван Тарасенко on 02.11.2023.
 //
 
 import UIKit
 
-final class OperationButton: UIButton {
+class BaseButton: UIButton {
     
     override public var isHighlighted: Bool {
         didSet {
@@ -24,7 +24,7 @@ final class OperationButton: UIButton {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        backgroundColor = R.Colors.operationButton
-    }
+            super.init(coder: coder)
+        layer.cornerRadius = 15
+        }
 }

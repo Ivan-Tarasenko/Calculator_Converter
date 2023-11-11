@@ -7,36 +7,16 @@
 
 import UIKit
 
-final class MultiCurrencySelectionButton: UIButton {
+final class MultiCurrencySelectionButton: BaseButton {
     
     var onActionMultiButton: (([String]) -> Void)?
-    
-    var viewModel: ViewModelProtocol?
-    
-    override public var isHighlighted: Bool {
-        didSet {
-            if isHighlighted {
-                UIView.animate(withDuration: 0.1) {
-                    self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                }
-            } else {
-                UIView.animate(withDuration: 0.1) {
-                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }
-            }
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        viewModel = ViewModel()
-        backgroundColor = R.Colors.blockConvertButton
-        setPopUpMenu(for: self)
-    }
+    var currencies: [String: Currency]?
     
     // setting menu for pop up button
-    @available(iOS 15.0, *)
     func setPopUpMenu(for button: UIButton) {
+        
+        guard let currencies = currencies else { return }
+       
         button.titleLabel?.adjustsFontSizeToFitWidth = true
 
         let itemPressed = { [weak self] (action: UIAction) in
@@ -44,17 +24,15 @@ final class MultiCurrencySelectionButton: UIButton {
             if action.title != ".../₽" {
                 let title = action.title.components(separatedBy: "/")
                 self.onActionMultiButton?(title)
-            }
+                }
         }
 
         var actions = [UIAction]()
 
         let ziroMenuItem = UIAction(title: ".../₽", state: .on, handler: itemPressed)
         actions.append(ziroMenuItem)
-
-        viewModel?.onUpDataCurrency = { currencies in
-            
-                let sortCurrency = currencies.sorted(by: {$0.key > $1.key})
+        
+        let sortCurrency = currencies.sorted(by: {$0.key > $1.key})
             
                 for (key, value) in sortCurrency {
                     let action = UIAction(title: "\(key)/₽", subtitle: value.name, state: .on, handler: itemPressed)
@@ -64,7 +42,5 @@ final class MultiCurrencySelectionButton: UIButton {
             button.menu = UIMenu(title: ".../₽", children: actions)
             button.showsMenuAsPrimaryAction = true
             button.changesSelectionAsPrimaryAction = true
-        }
-        
     }
 }

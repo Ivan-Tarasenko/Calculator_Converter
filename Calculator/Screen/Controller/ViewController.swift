@@ -6,14 +6,14 @@
 //
 
 import UIKit
+import FirebaseCrashlytics
 
 final class ViewController: UIViewController {
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var multiCurrencyButton: MultiCurrencySelectionButton!
-    @IBOutlet weak var crossCourseButton: ConverterButton!
-    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet weak var crossCourseButton: BaseButton!
     
     var currentInput: Double {
         get {
@@ -24,19 +24,21 @@ final class ViewController: UIViewController {
         }
     }
     
-    private let viewModel: ViewModelProtocol = ViewModel()
-    private var crossCoerseView: CrossCourseView?
-        
+    private var viewModel: ViewModelProtocol = ViewModel()
+    private var crossCourseView = CrossCourseView()
+    
+    private var isLoaded: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        crossCoerseView = CrossCourseView(viewModel: viewModel)
+        
         configurationView()
         addConstraint()
-        configur(buttons: buttons)
         multiCurrencyButtonPressed()
-        checkFetchData()
-        crossCoerseDonePressed()
-        crossCoerseCancelPressed()
+        crossCourseDonePressed()
+        crossCourseCancelPressed()
+        sendData()
+        checkIfDataHasLoaded()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -87,14 +89,74 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func convertDollarPressed(_ sender: UIButton) {
-        displayLabel.txt = viewModel.getCurrencyExchange(for: "USD", quantity: currentInput)
+        if isLoaded {
+            displayLabel.txt = viewModel.getCurrencyExchange(for: "USD", quantity: currentInput)
+        } else {
+            warnAboutMissingData()
+    }
+       
     }
     
     @IBAction func convertInEuroPressed(_ sender: UIButton) {
-        displayLabel.txt = viewModel.getCurrencyExchange(for: "EUR", quantity: currentInput)
+            if isLoaded {
+                displayLabel.txt = viewModel.getCurrencyExchange(for: "EUR", quantity: currentInput)
+            } else {
+                warnAboutMissingData()
+        }
     }
     
-    private func multiCurrencyButtonPressed() {
+    @IBAction func crossCoursePressed(_ sender: UIButton) {
+        if isLoaded {
+            viewModel.clear(&currentInput, and: displayLabel)
+            sender.titleLabel?.adjustsFontSizeToFitWidth = true
+            crossCourseView.isHidden = false
+        } else {
+            warnAboutMissingData()
+        }
+    }
+}
+
+// MARK: - Private extension
+private extension ViewController {
+    
+    func crossCourseDonePressed() {
+        crossCourseView.onDoneAction = { [weak self] in
+            guard let self else { return }
+            
+            crossCourseView.isHidden = true
+            
+            let crossRate = self.viewModel.calculateCrossRate(
+                for: crossCourseView.dataSource.valueOfFirstCurrency,
+                quantity: self.currentInput,
+                with: crossCourseView.dataSource.valueOfSecondCurrency
+            )
+            self.displayLabel.txt = crossRate
+            self.crossCourseButton.setTitle(
+                " \(crossCourseView.dataSource.firstTitle)/\(crossCourseView.dataSource.secondTitle) ",
+                for: .normal
+            )
+        }
+    }
+    
+    func crossCourseCancelPressed() {
+        crossCourseView.onCancelAction = { [weak self] in
+            guard let self else { return }
+            self.crossCourseView.isHidden = true
+        }
+    }
+    
+    func sendData() {
+        viewModel.onUpDataCurrency = { [weak self] currencies in
+            guard let self else { return }
+            self.multiCurrencyButton.currencies = currencies
+            self.multiCurrencyButton.setPopUpMenu(for: self.multiCurrencyButton)
+            
+            self.crossCourseView.currencies = currencies
+            self.crossCourseView.bind()
+        }
+    }
+    
+    func multiCurrencyButtonPressed() {
         multiCurrencyButton.onActionMultiButton = { titles in
             self.displayLabel.txt = self.viewModel.getCurrencyExchange(
                 for: titles[0],
@@ -103,78 +165,30 @@ final class ViewController: UIViewController {
         }
     }
     
-    @IBAction func crossCoursePressed(_ sender: UIButton) {
-        viewModel.clear(&currentInput, and: displayLabel)
-        sender.titleLabel?.adjustsFontSizeToFitWidth = true
-        crossCoerseView?.isHidden = false
+    func warnAboutMissingData() {
+        AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.noData)
     }
     
-    private func crossCoerseDonePressed() {
-        
-        guard let crossCoerseView = self.crossCoerseView else { return }
-        
-        crossCoerseView.onDoneAction = { [weak self] in
+    func checkIfDataHasLoaded() {
+        viewModel.onDataLoaded = { [weak self] isLoaded in
             guard let self else { return }
-            
-            crossCoerseView.isHidden = true
-            
-            let crossRate = self.viewModel.calculateCrossRate(
-                for: crossCoerseView.dataSource.valueOfFirstCurrency,
-                quantity: self.currentInput,
-                with: crossCoerseView.dataSource.valueOfSecondCurrency
-            )
-            self.displayLabel.txt = crossRate
-            self.crossCourseButton.setTitle(
-                " \(crossCoerseView.dataSource.firstTitle)/\(crossCoerseView.dataSource.secondTitle) ",
-                for: .normal
-            )
+            self.isLoaded = isLoaded
         }
     }
     
-    private func crossCoerseCancelPressed() {
-        crossCoerseView?.onCancelAction = { [weak self] in
-            guard let self else { return }
-            self.crossCoerseView?.isHidden = true
-        }
+    func configurationView() {
+        view.addSubview(crossCourseView)
+        crossCourseView.isHidden = true
+    }
+    
+    func addConstraint() {
+        crossCourseView.translatesAutoresizingMaskIntoConstraints = false
         
+        NSLayoutConstraint.activate([
+            crossCourseView.heightAnchor.constraint(equalToConstant: 270),
+            crossCourseView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            crossCourseView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            crossCourseView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
-    
-    // MARK: - Private extension
-    private extension ViewController {
-        
-        func configurationView() {
-            guard let crossCoerseView = crossCoerseView else { return }
-            view.addSubview(crossCoerseView)
-            crossCoerseView.isHidden = true
-        }
-        
-        func addConstraint() {
-            guard let crossCoerseView = crossCoerseView else { return }
-            crossCoerseView.translatesAutoresizingMaskIntoConstraints = false
-            
-            NSLayoutConstraint.activate([
-                crossCoerseView.heightAnchor.constraint(equalToConstant: 270),
-                crossCoerseView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                crossCoerseView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                crossCoerseView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            ])
-        }
-        
-        func configur(buttons: [UIButton]) {
-            for buttom in buttons {
-                buttom.layer.cornerRadius = 15
-            }
-        }
-        
-        func checkFetchData() {
-            viewModel.onFetchData = { [weak self] isFetchData in
-                guard let self else { return }
-                if !isFetchData {
-                    DispatchQueue.main.async {
-                        self.viewModel.showAlert(on: self, title: R.Titles.warningAlert, massage: R.Titles.massageAlert)
-                    }
-                }
-            }
-        }
-    }
