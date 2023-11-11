@@ -24,19 +24,23 @@ final class NetworkManager: NetworkManagerProtocol {
         let task = session.dataTask(with: URL) { data, response, error in
             
             if error != nil {
-                completion(nil, nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, nil, error)
+                }
             }
             
             if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode != 200 {
-                    completion(nil, httpResponse.statusCode, nil)
+                DispatchQueue.main.async {
+                    if httpResponse.statusCode != 200 {
+                        completion(nil, httpResponse.statusCode, nil)
+                    }
                 }
             }
             
             if let data = data {
-                self.saveData.data = data
-                if let currencyEntity =  self.parseJSON(withData: self.saveData.data!) {
-                    DispatchQueue.main.async {
+                print("get data")
+                DispatchQueue.main.async {
+                    if let currencyEntity =  self.parseJSON(withData: data) {
                         completion(currencyEntity.currency, nil, nil)
                     }
                 }

@@ -13,7 +13,7 @@ protocol ViewModelProtocol: AnyObject {
     var isTyping: Bool { get set }
     
     var onUpDataCurrency: (([String: Currency]) -> Void)? { get set }
-    var onFetchData: ((Bool) -> Void)? { get set }
+    var onDataLoaded: ((Bool) -> Void)? { get set }
     
     func limitInput(for inputValue: String, andShowIn label: UILabel)
     func clear(_ currentValue: inout Double, and label: UILabel)
@@ -33,7 +33,7 @@ protocol ViewModelProtocol: AnyObject {
 final class ViewModel: ViewModelProtocol {
     
     var onUpDataCurrency: (([String: Currency]) -> Void)?
-    var onFetchData: ((Bool) -> Void)?
+    var onDataLoaded: ((Bool) -> Void)?
     
     var isTyping = false
     var isDotPlaced = false
@@ -160,6 +160,9 @@ final class ViewModel: ViewModelProtocol {
         networkManager.fetchData { [weak self] currencies, responseCode, error  in
             guard let self else { return }
             
+//            print(error)
+//            print(responseCode)
+            
             if error != nil {
                 AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.noData)
             }
@@ -167,13 +170,11 @@ final class ViewModel: ViewModelProtocol {
             if responseCode != nil {
                 networkErrorHandling(status: responseCode!)
             }
-
+            
             if currencies != nil {
                 self.currencies = currencies
-            } else {
-                AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: "данные еще не загружены")
-            }
-            
+                onDataLoaded?(true)
+            } 
         }
     }
     
