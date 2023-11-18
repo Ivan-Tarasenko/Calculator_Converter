@@ -45,10 +45,10 @@ made by Ivan Tarasenko
 
 ## stack
 MVC  
-UIKit  
-Storyboard  
-UserDefaults  
+UIKit    
 URLSession  
+CoreData  
+Firebase  
 
 <p align="center">
 <a href="https://github.com/realm/SwiftLint" alt="SwiftLint badge">
