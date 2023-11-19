@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="hAD-8h-7vM">
-                                <rect key="frame" x="7" y="336" width="379" height="483"/>
+                                <rect key="frame" x="7" y="325.33333333333326" width="379" height="480.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="dTi-cp-PbP">
-                                        <rect key="frame" x="0.0" y="0.0" width="379" height="74.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="379" height="74.333333333333329"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K31-Hv-4C4" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block operations"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="UpBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ClearButton" label="ClearButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,8 +37,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6c-mA-BUt" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block operations"/>
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="UpBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="PlusOrMinusButton" label="PlusOrMinusButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,8 +49,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twz-6x-pcK" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block operations"/>
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="UpBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="PercentButton" label="PercentButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,8 +61,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-jg-2tQ" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block operations"/>
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="PlusButton" label="PlusButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,11 +75,11 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bQ1-L2-7gw">
-                                        <rect key="frame" x="0.0" y="81.666666666666686" width="379" height="74.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="81.333333333333371" width="379" height="74.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvT-ex-gA3" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="SevenButton" label="SevenButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,8 +90,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSX-mc-m8V" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="EightButton" label="EightButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,8 +102,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuM-GU-bEH" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="NineButton" label="NineButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,8 +114,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpJ-7r-kZc" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block operations"/>
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="MinusButton" label="MinusButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,11 +128,11 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="jxh-4I-tCE">
-                                        <rect key="frame" x="0.0" y="163.33333333333331" width="379" height="74.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="162.66666666666669" width="379" height="74.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17P-uG-asB" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="FourButton" label="FourButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,8 +143,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c56-8F-3UN" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="FiveButton" label="FiveButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,8 +155,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2Z-EH-Qb0" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="SixButton" label="SixButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -167,8 +167,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-N9-zkM" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block operations"/>
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="MultiplyButton" label="MultiplyButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,11 +181,11 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="lfv-m5-KMg">
-                                        <rect key="frame" x="0.0" y="244.99999999999997" width="379" height="74.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="244.00000000000006" width="379" height="74"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7p-n2-9lX" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="OneButton" label="OneButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -196,8 +196,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5d-Ge-HdZ" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="TwoButton" label="TwoButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -208,8 +208,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xc2-Ys-hke" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ThreeButton" label="ThreeButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -220,8 +220,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B34-nH-9cl" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block operations"/>
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74"/>
+                                                <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="DivisionButton" label="DivisionButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -234,11 +234,11 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="SNZ-bw-jwF">
-                                        <rect key="frame" x="0.0" y="326.66666666666663" width="379" height="74.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="325.00000000000006" width="379" height="74.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYD-QK-jl9" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="SquareRootButton" label="SquareRootButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -249,8 +249,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCq-LQ-tnS" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ZeroButton" label="ZeroButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -261,8 +261,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbn-mf-D2W" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Color button"/>
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="DotButton" label="DotButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -273,8 +273,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPN-Ct-OSs" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block operations"/>
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="EquallyButton" label="EquallyButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -287,11 +287,11 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="pDZ-1O-0l3">
-                                        <rect key="frame" x="0.0" y="408.33333333333337" width="379" height="74.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="406.33333333333331" width="379" height="74.333333333333314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uY-b2-AWq" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block converter button"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="DollarRateButton" label="DollarRateButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -302,8 +302,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ei9-mO-eGd" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block converter button"/>
+                                                <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="EuroRateButton" label="EuroRateButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -314,8 +314,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3V-5i-EvD" customClass="MultiCurrencySelectionButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block converter button"/>
+                                                <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ChooseCurrencyButton" label="ChooseCurrencyButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -323,8 +323,8 @@
                                                 <state key="normal" title=".../₽"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuH-gv-4e0" customClass="BaseButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.666666666666671"/>
-                                                <color key="backgroundColor" name="Block converter button"/>
+                                                <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
+                                                <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="CrossRateButton" label="CrossRateButton"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -339,7 +339,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="kvB-Nu-kZ9">
-                                <rect key="frame" x="7" y="209.00000000000003" width="379" height="118.33333333333334"/>
+                                <rect key="frame" x="7" y="198.99999999999997" width="379" height="117.66666666666666"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="ResultLabel"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="96"/>
@@ -350,14 +350,14 @@
                         <viewLayoutGuide key="safeArea" id="QVi-0b-ea3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kvB-Nu-kZ9" firstAttribute="top" secondItem="QVi-0b-ea3" secondAttribute="top" constant="150" id="3LG-Ge-gBg"/>
+                            <constraint firstItem="kvB-Nu-kZ9" firstAttribute="top" secondItem="QVi-0b-ea3" secondAttribute="top" constant="140" id="3LG-Ge-gBg"/>
                             <constraint firstItem="QVi-0b-ea3" firstAttribute="trailing" secondItem="hAD-8h-7vM" secondAttribute="trailing" constant="7" id="DVL-HK-aOe"/>
                             <constraint firstItem="hAD-8h-7vM" firstAttribute="leading" secondItem="QVi-0b-ea3" secondAttribute="leading" constant="7" id="cPW-hV-Lbe"/>
                             <constraint firstItem="hAD-8h-7vM" firstAttribute="top" secondItem="kvB-Nu-kZ9" secondAttribute="bottom" constant="8.6666666666666288" id="fnq-8N-toJ"/>
                             <constraint firstItem="kvB-Nu-kZ9" firstAttribute="leading" secondItem="QVi-0b-ea3" secondAttribute="leading" constant="7" id="pci-Nd-9N0"/>
                             <constraint firstItem="QVi-0b-ea3" firstAttribute="trailing" secondItem="kvB-Nu-kZ9" secondAttribute="trailing" constant="7" id="tf0-BE-EFO"/>
                             <constraint firstItem="kvB-Nu-kZ9" firstAttribute="height" secondItem="hAD-8h-7vM" secondAttribute="height" multiplier="0.245554" constant="-0.26924866666665537" id="uIa-sq-Sez"/>
-                            <constraint firstItem="QVi-0b-ea3" firstAttribute="bottom" secondItem="hAD-8h-7vM" secondAttribute="bottom" constant="-1" id="yrN-eg-LhV"/>
+                            <constraint firstItem="QVi-0b-ea3" firstAttribute="bottom" secondItem="hAD-8h-7vM" secondAttribute="bottom" constant="12" id="yrN-eg-LhV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -373,17 +373,17 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Block converter button">
-            <color red="0.92156863212585449" green="0.83137255907058716" blue="0.60392159223556519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="CenterBlock">
+            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Block operations">
-            <color red="1" green="0.60399997234344482" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="Color button">
-            <color red="0.65100002288818359" green="0.50599998235702515" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="LeftBlock">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Redult display text">
             <color red="0.26100000739097595" green="0.26100000739097595" blue="0.26100000739097595" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="UpBlock">
+            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

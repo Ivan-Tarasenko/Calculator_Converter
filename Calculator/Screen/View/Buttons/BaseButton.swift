@@ -24,7 +24,13 @@ class BaseButton: UIButton {
     }
     
     required init?(coder: NSCoder) {
-            super.init(coder: coder)
+        super.init(coder: coder)
         layer.cornerRadius = 15
-        }
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 4
+        layer.masksToBounds = false
+    }
 }

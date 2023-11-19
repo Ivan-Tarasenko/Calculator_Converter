@@ -39,15 +39,11 @@ final class ViewController: UIViewController {
         crossCourseCancelPressed()
         sendData()
         checkIfDataHasLoaded()
+        installObserver()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        if UIDevice.current.orientation.isPortrait {
-            topConstraint.constant = 142
-        } else {
-            topConstraint.constant = 10
-        }
+    deinit {
+        deinstallObsetver()
     }
     
     // MARK: - Actions
@@ -93,15 +89,15 @@ final class ViewController: UIViewController {
             displayLabel.txt = viewModel.getCurrencyExchange(for: "USD", quantity: currentInput)
         } else {
             warnAboutMissingData()
-    }
-       
+        }
+        
     }
     
     @IBAction func convertInEuroPressed(_ sender: UIButton) {
-            if isLoaded {
-                displayLabel.txt = viewModel.getCurrencyExchange(for: "EUR", quantity: currentInput)
-            } else {
-                warnAboutMissingData()
+        if isLoaded {
+            displayLabel.txt = viewModel.getCurrencyExchange(for: "EUR", quantity: currentInput)
+        } else {
+            warnAboutMissingData()
         }
     }
     
@@ -190,5 +186,23 @@ private extension ViewController {
             crossCourseView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             crossCourseView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    // Tracking the orientation of the device when the application is launched
+    func installObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.rotated),
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    func deinstallObsetver() {
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    @objc func rotated() {
+        if UIDevice.current.orientation.isLandscape {
+            topConstraint.constant = 6
+        } else {
+            topConstraint.constant = 140
+        }
     }
 }
