@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Calculator
+
+  Created by Иван Тарасенко on 19.11.2023.
+  
+*/
+
+CFBundleDisplayName = "Calculator & Currency Converter";

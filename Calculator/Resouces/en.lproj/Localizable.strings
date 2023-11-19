@@ -9,5 +9,5 @@
 "warning" = "Warning";
 
 "noData" = "It was not possible to get data on exchange rates, check your Internet connection.";
-"clientError" = "An unknown error has occurred, please try again later";
+"clientError" = "An unknown error has occurred, please try again later.";
 "serverError" = "There are technical problems, we try to solve this problem as soon as possible";
