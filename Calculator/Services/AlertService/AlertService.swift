@@ -9,9 +9,10 @@ import Foundation
 import UIKit
  
 class AlertService {
-  private init () {}
  
   static let shared = AlertService()
+    
+    private init () {}
  
     func showAlert(title: String, massage: String) {
         let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)

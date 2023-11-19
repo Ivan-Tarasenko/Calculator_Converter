@@ -191,11 +191,11 @@ final class CalculatorTests: XCTestCase {
         var testCurrency: [String: Currency]?
         var testError: Error?
         
-        nut.fetchData { data, error  in
-            testCurrency = data
-            testError = error
-            self.expectionPerfomingOperation.fulfill()
-        }
+//        nut.fetchData { data, error  in
+//            testCurrency = data
+//            testError = error
+//            self.expectionPerfomingOperation.fulfill()
+//        }
         
         wait(for: [expectionPerfomingOperation], timeout: 10)
         

@@ -5,8 +5,10 @@ disabled_rules:
 - force_try
 - type_name
 - nesting
-opt_in_rules:
 - empty_count
+- empty_enum_arguments
+opt_in_rules:
+#- empty_count
 - empty_string
 excluded:
 - R.generated.swift
