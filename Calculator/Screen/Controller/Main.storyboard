@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
@@ -28,7 +28,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="UpBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ClearButton" label="ClearButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="C"/>
@@ -40,7 +40,7 @@
                                                 <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="UpBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="PlusOrMinusButton" label="PlusOrMinusButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="±"/>
@@ -52,7 +52,7 @@
                                                 <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="UpBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="PercentButton" label="PercentButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="%"/>
@@ -64,7 +64,7 @@
                                                 <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="PlusButton" label="PlusButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="+"/>
@@ -81,7 +81,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="SevenButton" label="SevenButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="7"/>
@@ -93,7 +93,7 @@
                                                 <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="EightButton" label="EightButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="8"/>
@@ -105,7 +105,7 @@
                                                 <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="NineButton" label="NineButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="9"/>
@@ -117,7 +117,7 @@
                                                 <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="MinusButton" label="MinusButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="-"/>
@@ -134,7 +134,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="FourButton" label="FourButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="4"/>
@@ -146,7 +146,7 @@
                                                 <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="FiveButton" label="FiveButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="5"/>
@@ -158,7 +158,7 @@
                                                 <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="SixButton" label="SixButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="6"/>
@@ -170,7 +170,7 @@
                                                 <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="MultiplyButton" label="MultiplyButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="×"/>
@@ -187,7 +187,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="OneButton" label="OneButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="1"/>
@@ -199,7 +199,7 @@
                                                 <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="TwoButton" label="TwoButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="2"/>
@@ -211,7 +211,7 @@
                                                 <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ThreeButton" label="ThreeButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="3"/>
@@ -223,7 +223,7 @@
                                                 <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74"/>
                                                 <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="DivisionButton" label="DivisionButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="÷"/>
@@ -240,7 +240,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="SquareRootButton" label="SquareRootButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="√"/>
@@ -252,7 +252,7 @@
                                                 <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ZeroButton" label="ZeroButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="0"/>
@@ -264,7 +264,7 @@
                                                 <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="DotButton" label="DotButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="."/>
@@ -276,7 +276,7 @@
                                                 <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="EquallyButton" label="EquallyButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="="/>
@@ -293,7 +293,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="89.666666666666671" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="DollarRateButton" label="DollarRateButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="＄/₽"/>
@@ -305,7 +305,7 @@
                                                 <rect key="frame" x="96.666666666666686" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="EuroRateButton" label="EuroRateButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="€/₽"/>
@@ -317,7 +317,7 @@
                                                 <rect key="frame" x="193" y="0.0" width="89.666666666666686" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="CenterBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="ChooseCurrencyButton" label="ChooseCurrencyButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title=".../₽"/>
@@ -326,7 +326,7 @@
                                                 <rect key="frame" x="289.66666666666669" y="0.0" width="89.333333333333314" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="LeftBlock"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="CrossRateButton" label="CrossRateButton"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title=".../..."/>
@@ -374,7 +374,7 @@
     </scenes>
     <resources>
         <namedColor name="CenterBlock">
-            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LeftBlock">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -383,7 +383,7 @@
             <color red="0.26100000739097595" green="0.26100000739097595" blue="0.26100000739097595" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UpBlock">
-            <color red="0.99999994039535522" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99607843137254903" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
