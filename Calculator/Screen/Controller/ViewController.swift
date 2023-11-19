@@ -14,7 +14,6 @@ final class ViewController: UIViewController {
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var multiCurrencyButton: MultiCurrencySelectionButton!
     @IBOutlet weak var crossCourseButton: BaseButton!
-    @IBOutlet var buttons: [UIButton]!
     
     var currentInput: Double {
         get {
@@ -28,6 +27,8 @@ final class ViewController: UIViewController {
     private var viewModel: ViewModelProtocol = ViewModel()
     private var crossCourseView = CrossCourseView()
     
+    private var isLoaded: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +38,7 @@ final class ViewController: UIViewController {
         crossCourseDonePressed()
         crossCourseCancelPressed()
         sendData()
+        checkIfDataHasLoaded()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -87,17 +89,30 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func convertDollarPressed(_ sender: UIButton) {
-        displayLabel.txt = viewModel.getCurrencyExchange(for: "USD", quantity: currentInput)
+        if isLoaded {
+            displayLabel.txt = viewModel.getCurrencyExchange(for: "USD", quantity: currentInput)
+        } else {
+            warnAboutMissingData()
+    }
+       
     }
     
     @IBAction func convertInEuroPressed(_ sender: UIButton) {
-        displayLabel.txt = viewModel.getCurrencyExchange(for: "EUR", quantity: currentInput)
+            if isLoaded {
+                displayLabel.txt = viewModel.getCurrencyExchange(for: "EUR", quantity: currentInput)
+            } else {
+                warnAboutMissingData()
+        }
     }
     
     @IBAction func crossCoursePressed(_ sender: UIButton) {
-        viewModel.clear(&currentInput, and: displayLabel)
-        sender.titleLabel?.adjustsFontSizeToFitWidth = true
-        crossCourseView.isHidden = false
+        if isLoaded {
+            viewModel.clear(&currentInput, and: displayLabel)
+            sender.titleLabel?.adjustsFontSizeToFitWidth = true
+            crossCourseView.isHidden = false
+        } else {
+            warnAboutMissingData()
+        }
     }
 }
 
@@ -147,6 +162,17 @@ private extension ViewController {
                 for: titles[0],
                 quantity: self.currentInput
             )
+        }
+    }
+    
+    func warnAboutMissingData() {
+        AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.noData)
+    }
+    
+    func checkIfDataHasLoaded() {
+        viewModel.onDataLoaded = { [weak self] isLoaded in
+            guard let self else { return }
+            self.isLoaded = isLoaded
         }
     }
     

@@ -13,7 +13,7 @@ protocol ViewModelProtocol: AnyObject {
     var isTyping: Bool { get set }
     
     var onUpDataCurrency: (([String: Currency]) -> Void)? { get set }
-    var onFetchData: ((Bool) -> Void)? { get set }
+    var onDataLoaded: ((Bool) -> Void)? { get set }
     
     func limitInput(for inputValue: String, andShowIn label: UILabel)
     func clear(_ currentValue: inout Double, and label: UILabel)
@@ -24,8 +24,6 @@ protocol ViewModelProtocol: AnyObject {
     func performOperation(for value: inout Double)
     func enterNumberWithDot(in label: UILabel)
     
-    func fetchData()
-    
     func getCurrencyExchange(for charCode: String, quantity: Double) -> String
     func calculateCrossRate(for firstOperand: Double, quantity: Double, with secondOperand: Double) -> String
 }
@@ -33,7 +31,7 @@ protocol ViewModelProtocol: AnyObject {
 final class ViewModel: ViewModelProtocol {
     
     var onUpDataCurrency: (([String: Currency]) -> Void)?
-    var onFetchData: ((Bool) -> Void)?
+    var onDataLoaded: ((Bool) -> Void)?
     
     var isTyping = false
     var isDotPlaced = false
@@ -41,18 +39,18 @@ final class ViewModel: ViewModelProtocol {
     var secondOperand: Double = 0
     var operation: String = ""
     
+    var currencies: [String: Currency]? {
+        didSet {
+            if let currency = currencies {
+                onUpDataCurrency?(currency)
+            }
+        }
+    }
+    
     private var networkManager: NetworkManagerProtocol = NetworkManager()
     
-    var currencies: [String: Currency]? {
-           didSet {
-               if let currency = currencies {
-                   onUpDataCurrency?(currency)
-               }
-           }
-       }
-    
     init() {
-        fetchData()
+        setData()
     }
     
     func limitInput(for inputValue: String, andShowIn label: UILabel) {
@@ -155,30 +153,7 @@ final class ViewModel: ViewModelProtocol {
         isDotPlaced = false
     }
     
-    // MARK: - Fetch Data
-     func fetchData() {
-        networkManager.fetchData { [weak self] currencies, responseCode, error  in
-            guard let self else { return }
-            
-            if error != nil {
-                AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.noData)
-            }
-
-            if responseCode != nil {
-                networkErrorHandling(status: responseCode!)
-            }
-
-            if currencies != nil {
-                self.currencies = currencies
-            } else {
-                AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: "данные еще не загружены")
-            }
-            
-        }
-    }
-    
     // MARK: - Сurrency exchange rate transactions
-    
     func getCurrencyExchange(for charCode: String, quantity: Double) -> String {
         guard let currencies = currencies else { return "0" }
         var quantity = quantity
@@ -203,6 +178,60 @@ final class ViewModel: ViewModelProtocol {
         let roundValue = round(result * 1000) / 1000
         isTyping = false
         return String(roundValue)
+    }
+    
+    // MARK: - Private methods
+    private func setData() {
+        let isEmpty = CoreDataService.shared.isDatabaseEmpty()
+        isEmpty ? fetshData() : setDataFromDataBase()
+    }
+    
+    private func fetshData() {
+        networkManager.fetchData { [weak self] data, statusCode, error in
+            guard let self else { return }
+            
+            if error != nil {
+                DispatchQueue.main.async {
+                    AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.noData)
+                }
+            }
+            
+            if statusCode != nil {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    self.networkErrorHandling(status: statusCode!)
+                }
+            }
+            
+            if let data  = data {
+                setCurrent(data: data)
+                saveDataInDatabase(data)
+            }
+        }
+    }
+    
+    private func saveDataInDatabase(_ data: Data) {
+        DispatchQueue.main.async {
+            CoreDataService.shared.save(data: data)
+        }
+    }
+    
+    private func setCurrent(data: Data) {
+        if let currentData = self.networkManager.parseJSON(withData: data) {
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                self.currencies = currentData.currency
+                self.onDataLoaded?(true)
+            }
+        }
+    }
+    
+    private func setDataFromDataBase() {
+        CoreDataService.shared.getFetchData()
+        if let data = CoreDataService.shared.data?.value(forKey: DataEntity.keyAtribut) as? Data {
+            setCurrent(data: data)
+        }
+        
     }
     
     private func networkErrorHandling(status: Int) {

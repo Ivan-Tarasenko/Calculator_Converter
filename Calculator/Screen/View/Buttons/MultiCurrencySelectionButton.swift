@@ -10,10 +10,13 @@ import UIKit
 final class MultiCurrencySelectionButton: BaseButton {
     
     var onActionMultiButton: (([String]) -> Void)?
-    var currencies: [String: Currency] = [:]
+    var currencies: [String: Currency]?
     
     // setting menu for pop up button
     func setPopUpMenu(for button: UIButton) {
+        
+        guard let currencies = currencies else { return }
+       
         button.titleLabel?.adjustsFontSizeToFitWidth = true
 
         let itemPressed = { [weak self] (action: UIAction) in
@@ -21,15 +24,15 @@ final class MultiCurrencySelectionButton: BaseButton {
             if action.title != ".../₽" {
                 let title = action.title.components(separatedBy: "/")
                 self.onActionMultiButton?(title)
-            }
+                }
         }
 
         var actions = [UIAction]()
 
         let ziroMenuItem = UIAction(title: ".../₽", state: .on, handler: itemPressed)
         actions.append(ziroMenuItem)
-
-                let sortCurrency = currencies.sorted(by: {$0.key > $1.key})
+        
+        let sortCurrency = currencies.sorted(by: {$0.key > $1.key})
             
                 for (key, value) in sortCurrency {
                     let action = UIAction(title: "\(key)/₽", subtitle: value.name, state: .on, handler: itemPressed)
