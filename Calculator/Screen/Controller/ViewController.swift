@@ -24,7 +24,8 @@ final class ViewController: UIViewController {
         }
     }
     
-    private var viewModel: ViewModelProtocol = ViewModel()
+    private var converterViewModel: ConverterViewModelProtocol = ConverterViewModel()
+    private var calculateViewModel: CalculateViewModelProtocol = CalculateViewModel()
     private var crossCourseView = CrossCourseView()
     
     private var isLoaded: Bool = false
@@ -48,7 +49,7 @@ final class ViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func clearPressed(_ sender: UIButton) {
-        viewModel.clear(&currentInput, and: displayLabel)
+        calculateViewModel.clear(&currentInput, and: displayLabel)
     }
     
     @IBAction func reverseSingPressed(_ sender: UIButton) {
@@ -56,37 +57,37 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func procentPressed(_ sender: UIButton) {
-        viewModel.calculatePercentage(for: &currentInput)
+        calculateViewModel.calculatePercentage(for: &currentInput)
     }
     
     @IBAction func numberPressed(_ sender: UIButton) {
-        viewModel.doNotEnterZeroFirst(for: displayLabel)
-        viewModel.limitInput(for: sender.currentTitle!, andShowIn: displayLabel)
+        calculateViewModel.doNotEnterZeroFirst(for: displayLabel)
+        calculateViewModel.limitInput(for: sender.currentTitle!, andShowIn: displayLabel)
         sender.accessibilityIdentifier = "number \(String(describing: sender.titleLabel?.txt))"
         
     }
     
     @IBAction func operationPressed(_ sender: UIButton) {
-        viewModel.saveFirstОperand(from: currentInput)
-        viewModel.saveOperation(from: sender.currentTitle!)
+        calculateViewModel.saveFirstОperand(from: currentInput)
+        calculateViewModel.saveOperation(from: sender.currentTitle!)
     }
     
     @IBAction func equalityPressed(_ sender: UIButton) {
-        viewModel.performOperation(for: &currentInput)
+        calculateViewModel.performOperation(for: &currentInput)
     }
     
     @IBAction func sqrtPressed(_ sender: UIButton) {
         currentInput = sqrt(currentInput)
-        viewModel.isTyping = false
+        calculateViewModel.isTyping = false
     }
     
     @IBAction func dotButtonPressed(_ sender: UIButton) {
-        viewModel.enterNumberWithDot(in: displayLabel)
+        calculateViewModel.enterNumberWithDot(in: displayLabel)
     }
     
     @IBAction func convertDollarPressed(_ sender: UIButton) {
         if isLoaded {
-            displayLabel.txt = viewModel.getCurrencyExchange(for: "USD", quantity: currentInput)
+            displayLabel.txt = converterViewModel.getCurrencyExchange(for: "USD", quantity: currentInput)
         } else {
             warnAboutMissingData()
         }
@@ -95,7 +96,7 @@ final class ViewController: UIViewController {
     
     @IBAction func convertInEuroPressed(_ sender: UIButton) {
         if isLoaded {
-            displayLabel.txt = viewModel.getCurrencyExchange(for: "EUR", quantity: currentInput)
+            displayLabel.txt = converterViewModel.getCurrencyExchange(for: "EUR", quantity: currentInput)
         } else {
             warnAboutMissingData()
         }
@@ -103,7 +104,7 @@ final class ViewController: UIViewController {
     
     @IBAction func crossCoursePressed(_ sender: UIButton) {
         if isLoaded {
-            viewModel.clear(&currentInput, and: displayLabel)
+            calculateViewModel.clear(&currentInput, and: displayLabel)
             sender.titleLabel?.adjustsFontSizeToFitWidth = true
             crossCourseView.isHidden = false
         } else {
@@ -121,7 +122,7 @@ private extension ViewController {
             
             crossCourseView.isHidden = true
             
-            let crossRate = self.viewModel.calculateCrossRate(
+            let crossRate = self.converterViewModel.calculateCrossRate(
                 for: crossCourseView.dataSource.valueOfFirstCurrency,
                 quantity: self.currentInput,
                 with: crossCourseView.dataSource.valueOfSecondCurrency
@@ -142,7 +143,7 @@ private extension ViewController {
     }
     
     func sendData() {
-        viewModel.onUpDataCurrency = { [weak self] currencies in
+        converterViewModel.onUpDataCurrency = { [weak self] currencies in
             guard let self else { return }
             self.multiCurrencyButton.currencies = currencies
             self.multiCurrencyButton.setPopUpMenu(for: self.multiCurrencyButton)
@@ -154,7 +155,7 @@ private extension ViewController {
     
     func multiCurrencyButtonPressed() {
         multiCurrencyButton.onActionMultiButton = { titles in
-            self.displayLabel.txt = self.viewModel.getCurrencyExchange(
+            self.displayLabel.txt = self.converterViewModel.getCurrencyExchange(
                 for: titles[0],
                 quantity: self.currentInput
             )
@@ -166,7 +167,7 @@ private extension ViewController {
     }
     
     func checkIfDataHasLoaded() {
-        viewModel.onDataLoaded = { [weak self] isLoaded in
+        converterViewModel.onDataLoaded = { [weak self] isLoaded in
             guard let self else { return }
             self.isLoaded = isLoaded
         }
@@ -196,6 +197,7 @@ private extension ViewController {
     
     func deinstallObsetver() {
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(converterViewModel)
     }
     
     @objc func rotated() {
