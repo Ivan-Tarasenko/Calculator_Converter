@@ -11,9 +11,6 @@ import UIKit
 protocol CalculateViewModelProtocol: AnyObject {
     var isTyping: Bool { get set }
     
-//    var onUpDataCurrency: (([String: Currency]) -> Void)? { get set }
-//    var onDataLoaded: ((Bool) -> Void)? { get set }
-    
     func limitInput(for inputValue: String, andShowIn label: UILabel)
     func clear(_ currentValue: inout Double, and label: UILabel)
     func calculatePercentage(for value: inout Double)
@@ -27,10 +24,11 @@ protocol CalculateViewModelProtocol: AnyObject {
 final class CalculateViewModel: CalculateViewModelProtocol {
     
     var isTyping = false
-    var isDotPlaced = false
-    var firstOperand: Double = 0
-    var secondOperand: Double = 0
-    var operation: String = ""
+    
+    private var isDotPlaced = false
+    private var firstOperand: Double = 0
+    private var secondOperand: Double = 0
+    private var operation: String = ""
     
     func limitInput(for inputValue: String, andShowIn label: UILabel) {
         if isTyping {

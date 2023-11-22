@@ -24,7 +24,7 @@ final class NetworkManager: NetworkManagerProtocol {
         let task = session.dataTask(with: URL) { data, response, error in
             if error != nil {
                 DispatchQueue.main.async {
-                   completion(nil, nil, error)
+                    completion(nil, nil, error)
                 }
             }
             

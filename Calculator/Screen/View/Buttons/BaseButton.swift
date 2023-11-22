@@ -27,6 +27,10 @@ class BaseButton: UIButton {
         super.init(coder: coder)
         layer.cornerRadius = 15
         
+        setShadow()
+    }
+    
+    func setShadow() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowOpacity = 0.5

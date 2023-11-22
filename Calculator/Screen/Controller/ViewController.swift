@@ -44,7 +44,7 @@ final class ViewController: UIViewController {
     }
     
     deinit {
-        deinstallObsetver()
+        deinstallObserver()
     }
     
     // MARK: - Actions
@@ -195,7 +195,7 @@ private extension ViewController {
                                                name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
-    func deinstallObsetver() {
+    func deinstallObserver() {
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
         NotificationCenter.default.removeObserver(converterViewModel)
     }

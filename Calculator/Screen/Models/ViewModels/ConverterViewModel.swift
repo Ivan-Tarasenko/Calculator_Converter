@@ -10,9 +10,10 @@ import UIKit
 
 protocol ConverterViewModelProtocol: AnyObject {
     
-    var isTyping: Bool { get set }
     var onUpDataCurrency: (([String: Currency]) -> Void)? { get set }
     var onDataLoaded: ((Bool) -> Void)? { get set }
+    
+    var isTyping: Bool { get set }
     
     func getCurrencyExchange(for charCode: String, quantity: Double) -> String
     func calculateCrossRate(for firstOperand: Double, quantity: Double, with secondOperand: Double) -> String
@@ -25,7 +26,7 @@ final class ConverterViewModel: ConverterViewModelProtocol {
     
     var isTyping = false
     
-    var currencies: [String: Currency]? {
+    private var currencies: [String: Currency]? {
         didSet {
             if let currency = currencies {
                 onUpDataCurrency?(currency)
@@ -34,8 +35,10 @@ final class ConverterViewModel: ConverterViewModelProtocol {
     }
     
     private var networkManager: NetworkManagerProtocol = NetworkManager()
+    private var loadedData = Data()
     
     init() {
+        createTimer()
         installObserver()
     }
     
@@ -83,11 +86,10 @@ final class ConverterViewModel: ConverterViewModelProtocol {
     
     private func setData() {
         let isEmpty = CoreDataService.shared.isDatabaseEmpty()
-        isEmpty ? fetshData() : setDataFromDataBase()
-        print("set data")
+        isEmpty ? fetchData() : setDataFromDataBase()
     }
     
-    private func fetshData() {
+    private func fetchData() {
         networkManager.fetchData { [weak self] data, statusCode, error in
             guard let self else { return }
             if error != nil {
@@ -106,7 +108,7 @@ final class ConverterViewModel: ConverterViewModelProtocol {
             if let data  = data {
                 setCurrent(data: data)
                 saveDataInDatabase(data)
-//                loadedData = data
+                loadedData = data
             }
         }
     }
@@ -129,10 +131,20 @@ final class ConverterViewModel: ConverterViewModelProtocol {
     
     private func setDataFromDataBase() {
         CoreDataService.shared.getFetchData()
-        if let data = CoreDataService.shared.data?.value(forKey: DataEntity.keyAtribut) as? Data {
+        if let data = CoreDataService.shared.data?.value(forKey: DataEntity.attributeKey) as? Data {
             setCurrent(data: data)
         }
         
+    }
+    
+    func updateData() {
+        let isEmpty = CoreDataService.shared.isDatabaseEmpty()
+        
+        if !isEmpty {
+            if !CoreDataService.shared.compareDataFromDatabase(and: loadedData) {
+                fetchData()
+            }
+        }
     }
     
     private func networkErrorHandling(status: Int) {
@@ -146,6 +158,10 @@ final class ConverterViewModel: ConverterViewModelProtocol {
         }
     }
     
+    private func createTimer() {
+        _ = Timer.scheduledTimer(timeInterval: 7200.0, target: self, selector: #selector(updateDataWithTimer), userInfo: nil, repeats: true)
+    }
+    
     private func installObserver() {
         NotificationCenter.default.addObserver(
             self,
@@ -155,17 +171,13 @@ final class ConverterViewModel: ConverterViewModelProtocol {
         )
     }
     
+    // The function sets the output when the application comes to the foreground
     @objc private func appWillEnterForeground() {
         setData()
-        
-//        let isEmpty = CoreDataService.shared.isDatabaseEmpty()
-//        
-//        if !isEmpty {
-//            if !CoreDataService.shared.compareDataFromDatabase(and: loadedData!) {
-//                print("data not compare")
-//            }
-//        }
-        
-        print("Приложение вошло в передний план")
+    }
+    
+    // The function updates the data every two hours
+    @objc private func updateDataWithTimer() {
+        updateData()
     }
 }
