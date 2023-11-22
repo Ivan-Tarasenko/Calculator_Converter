@@ -36,6 +36,7 @@
 		1A7F63B52B0A20A3007A4A51 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A7F63B72B0A20A3007A4A51 /* Localizable.strings */; };
 		1A7F63B92B0A20AF007A4A51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A7F63BB2B0A20AF007A4A51 /* InfoPlist.strings */; };
 		1A94ACB12A0A966A00B6DBBC /* IDElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A94ACB02A0A966A00B6DBBC /* IDElement.swift */; };
+		1AF5E6952B0E317500ADCA17 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5E6942B0E317500ADCA17 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		1A7F63BA2B0A20AF007A4A51 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1A7F63BC2B0A20B4007A4A51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1A94ACB02A0A966A00B6DBBC /* IDElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDElement.swift; sourceTree = "<group>"; };
+		1AF5E6942B0E317500ADCA17 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +156,7 @@
 				1A1FDF5B2A09552F00663FA1 /* Application */,
 				1A4DC3DD2AF4F456000F6254 /* Services */,
 				1A1FDF5C2A09554800663FA1 /* Resouces */,
-				1A1FDF5E2A09556300663FA1 /* Screen */,
+				1A1FDF5E2A09556300663FA1 /* Screens */,
 				1A1FDF5D2A09555200663FA1 /* SupportingFiles */,
 			);
 			path = Calculator;
@@ -209,14 +211,13 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		1A1FDF5E2A09556300663FA1 /* Screen */ = {
+		1A1FDF5E2A09556300663FA1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				1A1FDF612A09558D00663FA1 /* Models */,
-				1A1FDF602A09558500663FA1 /* View */,
-				1A1FDF5F2A09556E00663FA1 /* Controller */,
+				1AF5E6922B0E313B00ADCA17 /* MainScreen */,
+				1AF5E6932B0E315800ADCA17 /* InfoScreen */,
 			);
-			path = Screen;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		1A1FDF5F2A09556E00663FA1 /* Controller */ = {
@@ -323,6 +324,32 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1AF5E6922B0E313B00ADCA17 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1A1FDF612A09558D00663FA1 /* Models */,
+				1A1FDF602A09558500663FA1 /* View */,
+				1A1FDF5F2A09556E00663FA1 /* Controller */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		1AF5E6932B0E315800ADCA17 /* InfoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1AF5E6962B0E317A00ADCA17 /* Controller */,
+			);
+			path = InfoScreen;
+			sourceTree = "<group>";
+		};
+		1AF5E6962B0E317A00ADCA17 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1AF5E6942B0E317500ADCA17 /* InfoViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,6 +559,7 @@
 				1A1FDF8D2A0A3AA600663FA1 /* ItemView.swift in Sources */,
 				1A1FDF2D2A09546B00663FA1 /* SceneDelegate.swift in Sources */,
 				1A1FDF7F2A09949000663FA1 /* CurrencyEntity.swift in Sources */,
+				1AF5E6952B0E317500ADCA17 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -111,6 +111,7 @@ final class ViewController: UIViewController {
             warnAboutMissingData()
         }
     }
+    
 }
 
 // MARK: - Private extension
