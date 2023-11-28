@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  ConverterViewModel.swift
 //  Calculator
 //
 //  Created by Иван Тарасенко on 08.05.2023.
@@ -8,38 +8,25 @@
 import Foundation
 import UIKit
 
-protocol ViewModelProtocol: AnyObject {
-    
-    var isTyping: Bool { get set }
+protocol ConverterViewModelProtocol: AnyObject {
     
     var onUpDataCurrency: (([String: Currency]) -> Void)? { get set }
     var onDataLoaded: ((Bool) -> Void)? { get set }
     
-    func limitInput(for inputValue: String, andShowIn label: UILabel)
-    func clear(_ currentValue: inout Double, and label: UILabel)
-    func calculatePercentage(for value: inout Double)
-    func doNotEnterZeroFirst(for label: UILabel)
-    func saveFirstОperand(from currentInput: Double)
-    func saveOperation(from currentOperation: String)
-    func performOperation(for value: inout Double)
-    func enterNumberWithDot(in label: UILabel)
+    var isTyping: Bool { get set }
     
     func getCurrencyExchange(for charCode: String, quantity: Double) -> String
     func calculateCrossRate(for firstOperand: Double, quantity: Double, with secondOperand: Double) -> String
 }
 
-final class ViewModel: ViewModelProtocol {
+final class ConverterViewModel: ConverterViewModelProtocol {
     
     var onUpDataCurrency: (([String: Currency]) -> Void)?
     var onDataLoaded: ((Bool) -> Void)?
     
     var isTyping = false
-    var isDotPlaced = false
-    var firstOperand: Double = 0
-    var secondOperand: Double = 0
-    var operation: String = ""
     
-    var currencies: [String: Currency]? {
+    private var currencies: [String: Currency]? {
         didSet {
             if let currency = currencies {
                 onUpDataCurrency?(currency)
@@ -48,115 +35,23 @@ final class ViewModel: ViewModelProtocol {
     }
     
     private var networkManager: NetworkManagerProtocol = NetworkManager()
+    private var loadedData = Data()
     
     init() {
-        setData()
-    }
-    
-    func limitInput(for inputValue: String, andShowIn label: UILabel) {
-        if isTyping {
-            if label.txt.count < 20 {
-                label.txt += inputValue
-            }
-        } else {
-            label.txt = inputValue
-            isTyping = true
-        }
-    }
-    
-    func doNotEnterZeroFirst(for label: UILabel) {
-        if label.txt == "0" {
-            isTyping = false
-        }
-    }
-    
-    func saveFirstОperand(from currentInput: Double) {
-        firstOperand = currentInput
-        isTyping = false
-        isDotPlaced = false
-    }
-    
-    func saveOperation(from currentOperation: String) {
-        operation = currentOperation
-    }
-    
-    func performOperation(for value: inout Double) {
-        
-        func performingAnOperation(with operand: (Double, Double) -> Double) {
-            guard !secondOperand.isZero else { return }
-            value = operand(firstOperand, secondOperand)
-            isTyping = false
-        }
-        
-        if isTyping {
-            secondOperand = value
-        }
-        
-        switch operation {
-        case "+":
-            performingAnOperation {$0 + $1}
-        case "-":
-            performingAnOperation {$0 - $1}
-        case "×":
-            performingAnOperation {$0 * $1}
-        case "÷":
-            performingAnOperation {$0 / $1}
-        default:
-            break
-        }
-        
-        if value < firstOperand {
-            firstOperand = value
-        } else {
-            secondOperand = value
-        }
-        
-    }
-    
-    func calculatePercentage(for value: inout Double) {
-        if firstOperand == 0 {
-            value /= 100
-        }
-        switch operation {
-        case "+":
-            value = firstOperand + ((firstOperand / 100) * value)
-        case "-":
-            value = firstOperand - ((firstOperand / 100) * value)
-        case "×":
-            value = (firstOperand / 100) * value
-        case "÷":
-            value = (firstOperand / value) * 100
-        default:
-            break
-        }
-        isTyping = false
-    }
-    
-    func enterNumberWithDot(in label: UILabel) {
-        if isTyping && !isDotPlaced {
-            isDotPlaced = true
-            label.txt  += "."
-        } else if !isTyping && !isDotPlaced {
-            isTyping = true
-            isDotPlaced = true
-            label.txt = "0."
-        }
-    }
-    
-    func clear(_ currentValue: inout Double, and label: UILabel) {
-        firstOperand = 0
-        secondOperand = 0
-        currentValue = 0
-        label.txt = "0"
-        operation = ""
-        isTyping = false
-        isDotPlaced = false
+        createTimer()
+        installObserver()
     }
     
     // MARK: - Сurrency exchange rate transactions
+    
     func getCurrencyExchange(for charCode: String, quantity: Double) -> String {
         guard let currencies = currencies else { return "0" }
         var quantity = quantity
+        
+        if quantity < 0 {
+            quantity = -quantity
+        }
+        
         if quantity == 0 {
             quantity = 1
         }
@@ -171,6 +66,11 @@ final class ViewModel: ViewModelProtocol {
     
     func calculateCrossRate(for firstOperand: Double, quantity: Double, with secondOperand: Double) -> String {
         var quantity = quantity
+        
+        if quantity < 0 {
+            quantity = -quantity
+        }
+        
         if quantity == 0 {
             quantity = 1
         }
@@ -181,15 +81,17 @@ final class ViewModel: ViewModelProtocol {
     }
     
     // MARK: - Private methods
+    
+    // MARK: - Fetch and set data
+    
     private func setData() {
         let isEmpty = CoreDataService.shared.isDatabaseEmpty()
-        isEmpty ? fetshData() : setDataFromDataBase()
+        isEmpty ? fetchData() : setDataFromDataBase()
     }
     
-    private func fetshData() {
+    private func fetchData() {
         networkManager.fetchData { [weak self] data, statusCode, error in
             guard let self else { return }
-            
             if error != nil {
                 DispatchQueue.main.async {
                     AlertService.shared.showAlert(title: R.Errors.warningAlert, massage: R.Errors.noData)
@@ -206,6 +108,7 @@ final class ViewModel: ViewModelProtocol {
             if let data  = data {
                 setCurrent(data: data)
                 saveDataInDatabase(data)
+                loadedData = data
             }
         }
     }
@@ -228,10 +131,20 @@ final class ViewModel: ViewModelProtocol {
     
     private func setDataFromDataBase() {
         CoreDataService.shared.getFetchData()
-        if let data = CoreDataService.shared.data?.value(forKey: DataEntity.keyAtribut) as? Data {
+        if let data = CoreDataService.shared.data?.value(forKey: DataEntity.attributeKey) as? Data {
             setCurrent(data: data)
         }
         
+    }
+    
+    func updateData() {
+        let isEmpty = CoreDataService.shared.isDatabaseEmpty()
+        
+        if !isEmpty {
+            if !CoreDataService.shared.compareDataFromDatabase(and: loadedData) {
+                fetchData()
+            }
+        }
     }
     
     private func networkErrorHandling(status: Int) {
@@ -243,5 +156,28 @@ final class ViewModel: ViewModelProtocol {
         default:
             break
         }
+    }
+    
+    private func createTimer() {
+        _ = Timer.scheduledTimer(timeInterval: 7200.0, target: self, selector: #selector(updateDataWithTimer), userInfo: nil, repeats: true)
+    }
+    
+    private func installObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appWillEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+    }
+    
+    // The function sets the output when the application comes to the foreground
+    @objc private func appWillEnterForeground() {
+        setData()
+    }
+    
+    // The function updates the data every two hours
+    @objc private func updateDataWithTimer() {
+        updateData()
     }
 }

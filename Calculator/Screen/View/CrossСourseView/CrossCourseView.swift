@@ -15,7 +15,7 @@ final class CrossCourseView: UIView {
     var dataSource = PickerDataSource()
     
     var currencies: [String: Currency] = [:]
-
+    
     private let stackView = UIStackView()
     private let pickerView = UIPickerView()
     
@@ -59,7 +59,7 @@ final class CrossCourseView: UIView {
     
 }
 
-// MARK: - Private extensiion
+// MARK: - Private extension
 private extension CrossCourseView {
     
     func getSortCurrencyKeys(from data: [String: Currency]) -> [String] {

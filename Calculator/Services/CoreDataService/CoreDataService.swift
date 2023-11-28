@@ -12,7 +12,7 @@ import CryptoKit
 
 struct DataEntity {
     static let entityName = "CurrencyData"
-    static let keyAtribut = "data"
+    static let attributeKey = "data"
 }
 
 final class CoreDataService {
@@ -35,7 +35,7 @@ final class CoreDataService {
         guard let entity = NSEntityDescription.entity(forEntityName: DataEntity.entityName, in: managedContext) else { return }
         let managedObject = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        managedObject.setValue(data, forKey: DataEntity.keyAtribut)
+        managedObject.setValue(data, forKey: DataEntity.attributeKey)
         
         clearDatabase()
         
@@ -43,7 +43,7 @@ final class CoreDataService {
             try managedContext.save()
             self.data = managedObject
         } catch let error as NSError {
-            print("Coud not fetch \(error), \(error.userInfo)")
+            print("Cloud not fetch \(error), \(error.userInfo)")
         }
     }
     
@@ -54,7 +54,7 @@ final class CoreDataService {
         do {
             data = try managedContext.fetch(fetchRequest).first
         } catch let error as NSError {
-            print("Coud not fetch \(error), \(error.userInfo)")
+            print("Cloud not fetch \(error), \(error.userInfo)")
         }
     }
     
@@ -67,7 +67,7 @@ final class CoreDataService {
             try managedContext.execute(deleteRequest)
             try managedContext.save()
         } catch let error as NSError {
-            print("Coud not fetch \(error), \(error.userInfo)")
+            print("Cloud not fetch \(error), \(error.userInfo)")
         }
     }
     
@@ -83,20 +83,17 @@ final class CoreDataService {
             return true
         }
     }
-
+    
     func compareDataFromDatabase(and fetch: Data) -> Bool {
         getFetchData()
-        guard let data = data?.value(forKey: DataEntity.keyAtribut) as? Data else { return false}
+        guard let data = data?.value(forKey: DataEntity.attributeKey) as? Data else { return false}
         return checkHash(lhs: data, rhs: fetch)
     }
     
     private func checkHash(lhs: Data, rhs: Data) -> Bool {
-         let lhsHash = SHA256.hash(data: lhs)
-         let rhsHash = SHA256.hash(data: rhs)
-        print("///////////////////////")
-        print(lhsHash.description)
-        print(rhsHash.description)
+        let lhsHash = SHA256.hash(data: lhs)
+        let rhsHash = SHA256.hash(data: rhs)
         
-         return lhsHash == rhsHash ? true : false
-     }
+        return lhsHash == rhsHash ? true : false
+    }
 }

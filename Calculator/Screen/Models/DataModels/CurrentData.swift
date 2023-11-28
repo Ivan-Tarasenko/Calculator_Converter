@@ -10,7 +10,7 @@ import Foundation
 // MARK: - CurrentData
 struct CurrentData: Codable {
     let valute: [String: Currency]
-
+    
     enum CodingKeys: String, CodingKey {
         case valute = "Valute"
     }
@@ -21,7 +21,7 @@ struct Currency: Codable {
     let nominal: Double
     let name: String
     let value: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case nominal = "Nominal"
         case name = "Name"
