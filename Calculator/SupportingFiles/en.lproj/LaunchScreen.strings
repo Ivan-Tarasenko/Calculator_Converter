@@ -1,9 +1,9 @@
 
 /* Class = "UILabel"; text = "Calculator"; ObjectID = "3YP-YU-jdj"; */
-"3YP-YU-jdj.text" = "Калькулятор";
+"3YP-YU-jdj.text" = "Calculator";
 
 /* Class = "UILabel"; text = "Converter"; ObjectID = "vKj-Nn-aCH"; */
-"vKj-Nn-aCH.text" = "Конвертер";
+"vKj-Nn-aCH.text" = "Converter";
 
 /* Class = "UILabel"; text = "&"; ObjectID = "zCD-J5-DKh"; */
 "zCD-J5-DKh.text" = "&";

@@ -1,0 +1,88 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "clientError" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unknown error has occurred, please try again later."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошла неизвестная ошибка, пожалуйста, повторите попытку позже."
+          }
+        }
+      }
+    },
+    "descAPI" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For providing information about exchange rates, I thank the service \"Exchange Rates\", API:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "За предоставление информации о курсах обмена валют я благодарю сервис \"Курсы обмена валют\", API:"
+          }
+        }
+      }
+    },
+    "noData" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It was not possible to get data on exchange rates, check your Internet connection."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось получить данные о курсах валют, проверьте свое интернет-соединение."
+          }
+        }
+      }
+    },
+    "serverError" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are technical problems, we try to solve this problem as soon as possible"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Возникли технические проблемы, мы стараемся решить эту проблему как можно скорее."
+          }
+        }
+      }
+    },
+    "warning" : {
+      "comment" : "Localizable.strings\n  Calculator\n\n  Created by Иван Тарасенко on 09.05.2023.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warning"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Внимание"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
