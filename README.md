@@ -1,6 +1,6 @@
 <div align="center">
 <br>
-<h1>CalcConverter <img src="/Preview/icon.png" width="50" height="50" hspace="10"/></h1> 
+<h1>Calculator & Fast Converter <img src="/Preview/icon.png" width="50" height="50" hspace="10"/></h1> 
 </div>
 
 <p align="center">
