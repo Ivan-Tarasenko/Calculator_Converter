@@ -188,18 +188,17 @@ final class CalculatorTests: XCTestCase {
     
     func testFetchData() throws {
         
-        var testCurrency: [String: Currency]?
+        var testData: Data?
         var testError: Error?
         
-        nut.fetchData { data, error  in
-            testCurrency = data
+        nut.fetchData {data, _, error in
+            testData = data
             testError = error
             self.expectionPerfomingOperation.fulfill()
         }
         
         wait(for: [expectionPerfomingOperation], timeout: 10)
-        
-        XCTAssertNotNil(testCurrency)
+        XCTAssertNotNil(testData)
         XCTAssertNil(testError)
     }
     

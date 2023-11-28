@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oxW-Qj-F1H">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Info View Controller-->
+        <scene sceneID="j5M-9B-n4i">
+            <objects>
+                <viewController id="oxW-Qj-F1H" customClass="InfoViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mtn-BK-VNC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="GiZ-4Q-lOB">
+                                <rect key="frame" x="16" y="149" width="361" height="129.66666666666663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="For providing information about exchange rates, I thank the service &quot;Exchange Rates&quot;, API:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZ9-An-osQ">
+                                        <rect key="frame" x="6.3333333333333428" y="0.0" width="348.66666666666663" height="77"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="https://www.cbr-xml-daily.ru/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEX-hC-SP4">
+                                        <rect key="frame" x="37.666666666666657" y="104" width="286" height="25.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vSH-Ef-yLA">
+                                <rect key="frame" x="103.33333333333333" y="722.33333333333337" width="186.33333333333337" height="25.666666666666629"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="App verasion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a50-2i-IsQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="129.33333333333334" height="25.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="1.0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wu-kh-tii">
+                                        <rect key="frame" x="137.33333333333331" y="0.0" width="49" height="25.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KrG-EQ-wM4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KrG-EQ-wM4" firstAttribute="bottom" secondItem="vSH-Ef-yLA" secondAttribute="bottom" constant="70" id="75v-L4-SRL"/>
+                            <constraint firstItem="GiZ-4Q-lOB" firstAttribute="top" secondItem="KrG-EQ-wM4" secondAttribute="top" constant="90" id="C0P-im-gox"/>
+                            <constraint firstItem="vSH-Ef-yLA" firstAttribute="centerX" secondItem="mtn-BK-VNC" secondAttribute="centerX" id="D8y-9T-CWM"/>
+                            <constraint firstAttribute="trailing" secondItem="GiZ-4Q-lOB" secondAttribute="trailing" constant="16" id="Koc-no-jFL"/>
+                            <constraint firstItem="GiZ-4Q-lOB" firstAttribute="leading" secondItem="KrG-EQ-wM4" secondAttribute="leading" constant="16" id="Yqm-1O-Ii4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fqc-4W-P9e"/>
+                    <connections>
+                        <outlet property="appVersionLabel" destination="8Wu-kh-tii" id="Im1-o2-YVM"/>
+                        <outlet property="descriptionAPILabel" destination="lZ9-An-osQ" id="kbU-E3-VCi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5T-IO-IV5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803.81679389312978" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
