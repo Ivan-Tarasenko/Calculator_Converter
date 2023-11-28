@@ -3,15 +3,11 @@
 <h1>CalcConverter <img src="/Preview/icon.png" width="50" height="50" hspace="10"/></h1> 
 </div>
 
-<div align="center">
-<h4>Calculator and Currency Converter</h4>
-</div>
-
-## Description
-
 <p align="center">
 <img src="/Preview/ImageGitHub.png"/>
 </p>
+
+## Description
 
 This application is a simple and reliable calculator with a very convenient currency converter. The application is made in two color themes so that everyone can find a style to their liking.
 Simplicity and convenience are the main principles for you!  
