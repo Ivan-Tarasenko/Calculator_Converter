@@ -38,7 +38,6 @@ final class ConverterViewModel: ConverterViewModelProtocol {
     private var loadedData = Data()
     
     init() {
-        createTimer()
         installObserver()
     }
     
@@ -158,10 +157,6 @@ final class ConverterViewModel: ConverterViewModelProtocol {
         }
     }
     
-    private func createTimer() {
-        _ = Timer.scheduledTimer(timeInterval: 7200.0, target: self, selector: #selector(updateDataWithTimer), userInfo: nil, repeats: true)
-    }
-    
     private func installObserver() {
         NotificationCenter.default.addObserver(
             self,
@@ -173,11 +168,7 @@ final class ConverterViewModel: ConverterViewModelProtocol {
     
     // The function sets the output when the application comes to the foreground
     @objc private func appWillEnterForeground() {
-        setData()
-    }
-    
-    // The function updates the data every two hours
-    @objc private func updateDataWithTimer() {
         updateData()
+        setData()
     }
 }
