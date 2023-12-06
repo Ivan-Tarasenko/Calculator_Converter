@@ -202,9 +202,11 @@ private extension ViewController {
     }
     
     @objc func rotated() {
-        if UIDevice.current.orientation.isLandscape {
+        let currentOrientation = UIDevice.current.orientation
+
+        if currentOrientation.isLandscape {
             topConstraint.constant = 6
-        } else {
+        } else if currentOrientation.isPortrait {
             topConstraint.constant = 140
         }
     }
